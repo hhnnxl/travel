@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海南5日轻松攻略 | 吃喝玩乐躺平版 🦛</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* 海滨城市配色 */
+            --primary: #1e88e5;        /* 海蓝 */
+            --primary-light: #42a5f5;  /* 主色浅 */
+            --secondary: #0277bd;      /* 辅色 */
+            --accent: #ffca28;         /* 沙滩黄 */
+            --bg-light: #f8f9fa;
+            --bg-cream: #fefdfb;
+            --text-dark: #2c3e50;
+            --text-muted: #6c757d;
+            --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --card-hover: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Fixed Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav.visible { transform: translateY(0); }
+
+        .nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover { color: var(--primary); }
+
+        @media (max-width: 768px) {
+            .nav { gap: 0.8rem; padding: 0.8rem 1rem; font-size: 0.85rem; }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(30, 136, 229, 0.85), rgba(66, 165, 245, 0.75)),
+                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, var(--bg-cream), transparent);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-tag {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s;
+        }
+
+        .hero-tag:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Overview Section */
+        .overview {
+            max-width: 1400px;
+            margin: -5rem auto 4rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .overview-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+        }
+
+        .overview-card:hover {
+            box-shadow: var(--card-hover);
+            transform: translateY(-5px);
+        }
+
+        .overview-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .overview-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .weather-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            padding: 0.5rem 0;
+            border-left: 3px solid var(--primary-light);
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Days Navigation */
+        .days-nav {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .day-btn {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .day-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .day-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .day-section { display: none; }
+        .day-section.active { display: block; }
+
+        .day-title {
+            font-size: 2.5rem;
+            font-family: 'Noto Serif SC', serif;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .day-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        .time-slot {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            border-left: 3px solid var(--primary-light);
+            position: relative;
+        }
+
+        .time-slot::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .time-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .option {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .option:hover {
+            transform: translateX(5px);
+            border-left-color: var(--accent);
+        }
+
+        .option.recommended {
+            border-left-color: var(--accent);
+            background: linear-gradient(to right, rgba(255, 202, 40, 0.05), white);
+        }
+
+        .option-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .option-title .badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+        }
+
+        .option-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .option-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--bg-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .tag.price {
+            background: rgba(255, 202, 40, 0.1);
+            color: var(--accent);
+        }
+
+        /* Food & Attractions Grid */
+        .cards-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-family: 'Noto Serif SC', serif;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.1);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--bg-light);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .card-rating {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .card-address {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px dashed var(--bg-light);
+        }
+
+        /* Map Section */
+        .map-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        #map-container {
+            height: 500px;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            border: 2px solid var(--bg-light);
+        }
+
+        .map-legend {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .legend-item {
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            background: var(--bg-light);
+            font-weight: 500;
+        }
+
+        /* Route Combinations */
+        .routes {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .route-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .route-card:hover {
+            transform: translateX(5px);
+            box-shadow: var(--card-hover);
+        }
+
+        .route-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .route-steps {
+            list-style: none;
+        }
+
+        .route-steps li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .route-steps li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Budget Table */
+        .budget {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .budget-table {
+            width: 100%;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .budget-table th,
+        .budget-table td {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .budget-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .budget-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .budget-table tr:hover td {
+            background: var(--bg-light);
+        }
+
+        .budget-table tr.total-row {
+            font-weight: 700;
+            background: linear-gradient(to right, rgba(30, 136, 229, 0.05), rgba(66, 165, 245, 0.05));
+        }
+
+        .budget-table tr.total-row td {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Warnings */
+        .warnings {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .warning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .warning-card {
+            background: linear-gradient(135deg, #fff5f5, #ffffff);
+            border: 2px solid #feb2b2;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border-left: 5px solid #f56565;
+            transition: all 0.3s;
+        }
+
+        .warning-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(245, 101, 101, 0.2);
+        }
+
+        .warning-card h4 {
+            color: #c53030;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .warning-card p {
+            color: #742a2a;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .overview { margin-top: -3rem; }
+            .day-title, .section-title { font-size: 2rem; }
+            .days-nav { flex-direction: column; align-items: stretch; }
+            .day-btn { width: 100%; }
+            .map-legend { flex-direction: column; gap: 1rem; }
+            #map-container { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="#overview">概览</a>
+        <a href="#timeline">行程</a>
+        <a href="#food">美食</a>
+        <a href="#attractions">景点</a>
+        <a href="#map">地图</a>
+        <a href="#routes">路线</a>
+        <a href="#budget">预算</a>
+        <a href="#warnings">避雷</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">🦛 河马出品 | 5日轻松游</span>
+            <h1>海南</h1>
+            <p class="hero-subtitle">阳光沙滩 · 椰林海韵 · 美食天堂</p>
+            <div class="hero-tags">
+                <span class="hero-tag">🏖️ 海滨度假</span>
+                <span class="hero-tag">🥥 椰风海韵</span>
+                <span class="hero-tag">🦀 海鲜大餐</span>
+                <span class="hero-tag">🌴 热带风情</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="overview" id="overview">
+        <div class="overview-grid">
+            <div class="overview-card">
+                <h3>🌸 最佳季节</h3>
+                <p>11月-次年4月（避开台风季）</p>
+                <div class="weather-note">🌸 春季：20-28°C，舒适</div>
+                <div class="weather-note">☀️ 夏季：28-35°C，炎热多雨</div>
+                <div class="weather-note">🍂 秋季：25-32°C，台风季（9-10月）</div>
+                <div class="weather-note">❄️ 冬季：18-25°C，最佳季节</div>
+            </div>
+            <div class="overview-card">
+                <h3>🚗 交通</h3>
+                <p>飞机直达海口/三亚</p>
+                <div class="weather-note">💡 海口美兰机场：距市区25km</div>
+                <div class="weather-note">💡 三亚凤凰机场：距市区15km</div>
+                <div class="weather-note">💡 环岛高铁：海口-三亚1.5h</div>
+            </div>
+            <div class="overview-card">
+                <h3>🏨 住宿</h3>
+                <p>三亚湾/亚龙湾/海棠湾</p>
+                <div class="weather-note">💰 省钱：民宿 150-300元</div>
+                <div class="weather-note">💰 舒适：酒店 400-800元</div>
+                <div class="weather-note">💰 豪华：度假村 1500+元</div>
+            </div>
+            <div class="overview-card">
+                <h3>🦀 必吃</h3>
+                <p>文昌鸡、椰子鸡、海鲜</p>
+                <div class="weather-note">🔥 本地人爱：海宝酒家（崖州菜）</div>
+                <div class="weather-note">🔥 网红必吃：椰子鸡火锅</div>
+            </div>
+            <div class="overview-card">
+                <h3>😴 累度</h3>
+                <p>轻松休闲，海滩躺平</p>
+                <div class="weather-note">⚡ 每天步行：5-8km</div>
+                <div class="weather-note">⚡ 体力要求：低</div>
+            </div>
+            <div class="overview-card">
+                <h3>📱 必备APP</h3>
+                <p>高德地图、大众点评、防晒霜</p>
+                <div class="weather-note">📲 防晒：SPF50+，必备！</div>
+                <div class="weather-note">📲 驱蚊：热带蚊虫多</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Days Navigation -->
+    <div class="days-nav" id="timeline">
+        <button class="day-btn active" onclick="showDay(1)">Day 1</button>
+        <button class="day-btn" onclick="showDay(2)">Day 2</button>
+        <button class="day-btn" onclick="showDay(3)">Day 3</button>
+        <button class="day-btn" onclick="showDay(4)">Day 4</button>
+        <button class="day-btn" onclick="showDay(5)">Day 5</button>
+    </div>
+
+    <!-- Day 1 -->
+    <section class="timeline day-section active" id="day-1">
+        <h2 class="day-title">Day 1 | 海口→文昌</h2>
+
+        <div class="time-slot">
+            <div class="time-label">🌅 上午 (8:00-12:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 抵达海口，租车/高铁<span class="badge">推荐</span></div>
+                <div class="option-desc">海口美兰机场 → 文昌（高铁40分钟/自驾1.5h）</div>
+                <div class="option-tags">
+                    <span class="tag">交通</span>
+                    <span class="tag price">💰 高铁30元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">☀️ 午餐 (12:00-13:30)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 文昌椰奶鸡<span class="badge">必吃</span></div>
+                <div class="option-desc">文昌鸡+椰奶火锅，当地特色，80元/人</div>
+                <div class="option-tags">
+                    <span class="tag">特色</span>
+                    <span class="tag">地道</span>
+                    <span class="tag price">💰 80元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌞 下午 (13:30-17:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 抱虎角（风车海滩）<span class="badge">小众</span></div>
+                <div class="option-desc">风车+沙滩，拍照圣地，免费，1-2小时</div>
+                <div class="option-tags">
+                    <span class="tag">免费</span>
+                    <span class="tag">拍照</span>
+                    <span class="tag price">💰 0元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 石头山公园</div>
+                <div class="option-desc">海边礁石，文艺小清新，免费</div>
+                <div class="option-tags">
+                    <span class="tag">免费</span>
+                    <span class="tag price">💰 0元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌆 晚餐 (17:00-19:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 海鲜大排档<span class="badge">推荐</span></div>
+                <div class="option-desc">清蒸石斑、辣炒螃蟹，100元/人</div>
+                <div class="option-tags">
+                    <span class="tag">海鲜</span>
+                    <span class="tag price">💰 100元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌙 夜间 (19:00-21:00)</div>
+            <div class="option">
+                <div class="option-title">A. 海滩散步看日落</div>
+                <div class="option-desc">文昌海滩，日落很美，免费</div>
+                <div class="option-tags">
+                    <span class="tag">日落</span>
+                    <span class="tag price">💰 0元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 回酒店休息</div>
+                <div class="option-desc">早点休息，明天继续</div>
+                <div class="option-tags">
+                    <span class="tag">休息</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 2 -->
+    <section class="timeline day-section" id="day-2">
+        <h2 class="day-title">Day 2 | 文昌→三亚</h2>
+
+        <div class="time-slot">
+            <div class="time-label">🌅 早餐 (8:00-9:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 文昌鸡粥<span class="badge">推荐</span></div>
+                <div class="option-desc">本地早餐，20元/人</div>
+                <div class="option-tags">
+                    <span class="tag">地道</span>
+                    <span class="tag price">💰 20元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌤️ 上午 (9:00-12:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 前往三亚<span class="badge">必去</span></div>
+                <div class="option-desc">高铁/自驾，2-3小时，沿途风景很美</div>
+                <div class="option-tags">
+                    <span class="tag">交通</span>
+                    <span class="tag price">💰 高铁80元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">☀️ 午餐 (12:00-13:30)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 椰子鸡火锅<span class="badge">必吃</span></div>
+                <div class="option-desc">三亚特色，椰子水+文昌鸡，80元/人</div>
+                <div class="option-tags">
+                    <span class="tag">特色</span>
+                    <span class="tag price">💰 80元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌞 下午 (13:30-17:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 小东海（玻璃海）<span class="badge">小众</span></div>
+                <div class="option-desc">人少水清，浮潜+玻璃海，免费，2-3小时</div>
+                <div class="option-tags">
+                    <span class="tag">免费</span>
+                    <span class="tag">浮潜</span>
+                    <span class="tag price">💰 0元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 大东海海滩</div>
+                <div class="option-desc">开发成熟，人多但方便，免费</div>
+                <div class="option-tags">
+                    <span class="tag">免费</span>
+                    <span class="tag price">💰 0元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌆 晚餐 (17:00-19:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 海宝酒家（崖州菜）<span class="badge">推荐</span></div>
+                <div class="option-desc">32年老店，山捞叶炒鸡+酸豆鲜鱼汤，50元/人</div>
+                <div class="option-tags">
+                    <span class="tag">老字号</span>
+                    <span class="tag">本地人爱</span>
+                    <span class="tag price">💰 50元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌙 夜间 (19:00-21:00)</div>
+            <div class="option">
+                <div class="option-title">A. 三亚湾椰梦长廊</div>
+                <div class="option-desc">日落+散步，免费</div>
+                <div class="option-tags">
+                    <span class="tag">日落</span>
+                    <span class="tag price">💰 0元</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 3 -->
+    <section class="timeline day-section" id="day-3">
+        <h2 class="day-title">Day 3 | 三亚深度游</h2>
+
+        <div class="time-slot">
+            <div class="time-label">🌅 早餐 (8:00-9:00)</div>
+            <div class="option">
+                <div class="option-title">A. 抱罗粉</div>
+                <div class="option-desc">海南粉，15元/人</div>
+                <div class="option-tags">
+                    <span class="tag">地道</span>
+                    <span class="tag price">💰 15元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌤️ 上午 (9:00-12:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 亚龙湾热带天堂森林公园<span class="badge">必去</span></div>
+                <div class="option-desc">雨林栈道+玻璃栈道+海景，门票158元，3小时</div>
+                <div class="option-tags">
+                    <span class="tag">网红</span>
+                    <span class="tag">拍照</span>
+                    <span class="tag price">💰 158元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 蜈支洲岛</div>
+                <div class="option-desc">潜水+水上项目，门票+船票144元</div>
+                <div class="option-tags">
+                    <span class="tag">潜水</span>
+                    <span class="tag price">💰 144元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">☀️ 午餐 (12:00-13:30)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 亚龙湾海鲜自助<span class="badge">推荐</span></div>
+                <div class="option-desc">海鲜自助，150元/人</div>
+                <div class="option-tags">
+                    <span class="tag">海鲜</span>
+                    <span class="tag price">💰 150元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌞 下午 (13:30-17:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 亚龙湾海滩躺平<span class="badge">推荐</span></div>
+                <div class="option-desc">最美海湾，免费，租躺椅50元</div>
+                <div class="option-tags">
+                    <span class="tag">免费</span>
+                    <span class="tag">躺平</span>
+                    <span class="tag price">💰 0-50元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 鹿回头公园</div>
+                <div class="option-desc">俯瞰三亚全景，门票45元</div>
+                <div class="option-tags">
+                    <span class="tag">观景</span>
+                    <span class="tag price">💰 45元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌆 晚餐 (17:00-19:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 第一市场海鲜<span class="badge">必吃</span></div>
+                <div class="option-desc">买海鲜+加工，性价比高，80元/人</div>
+                <div class="option-tags">
+                    <span class="tag">海鲜</span>
+                    <span class="tag">便宜</span>
+                    <span class="tag price">💰 80元</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 4 -->
+    <section class="timeline day-section" id="day-4">
+        <h2 class="day-title">Day 4 | 三亚→陵水</h2>
+
+        <div class="time-slot">
+            <div class="time-label">🌅 早餐 (8:00-9:00)</div>
+            <div class="option">
+                <div class="option-title">A. 海南粉</div>
+                <div class="option-desc">15元/人</div>
+                <div class="option-tags">
+                    <span class="tag price">💰 15元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌤️ 上午 (9:00-12:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 南湾猴岛<span class="badge">有趣</span></div>
+                <div class="option-desc">猴子+跨海索道，门票154元，2-3小时</div>
+                <div class="option-tags">
+                    <span class="tag">亲子</span>
+                    <span class="tag">索道</span>
+                    <span class="tag price">💰 154元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 分界洲岛</div>
+                <div class="option-desc">潜水+海钓，门票+船票132元</div>
+                <div class="option-tags">
+                    <span class="tag">潜水</span>
+                    <span class="tag price">💰 132元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">☀️ 午餐 (12:00-13:30)</div>
+            <div class="option">
+                <div class="option-title">A. 陵水酸粉</div>
+                <div class="option-desc">特色小吃，20元/人</div>
+                <div class="option-tags">
+                    <span class="tag">特色</span>
+                    <span class="tag price">💰 20元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌞 下午 (13:30-17:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 清水湾<span class="badge">小众</span></div>
+                <div class="option-desc">人少沙细，会唱歌的沙滩，免费，2-3小时</div>
+                <div class="option-tags">
+                    <span class="tag">免费</span>
+                    <span class="tag">小众</span>
+                    <span class="tag price">💰 0元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 返回三亚</div>
+                <div class="option-desc">高铁30分钟，休息准备返程</div>
+                <div class="option-tags">
+                    <span class="tag">休息</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌆 晚餐 (17:00-19:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 崖州古城美食<span class="badge">推荐</span></div>
+                <div class="option-desc">崖州菜+海鲜，60元/人</div>
+                <div class="option-tags">
+                    <span class="tag">特色</span>
+                    <span class="tag price">💰 60元</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 5 -->
+    <section class="timeline day-section" id="day-5">
+        <h2 class="day-title">Day 5 | 三亚→返程</h2>
+
+        <div class="time-slot">
+            <div class="time-label">🌅 早餐 (8:00-9:00)</div>
+            <div class="option">
+                <div class="option-title">A. 椰子饭</div>
+                <div class="option-desc">特色早餐，25元/人</div>
+                <div class="option-tags">
+                    <span class="tag price">💰 25元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌤️ 上午 (9:00-12:00)</div>
+            <div class="option">
+                <div class="option-title">A. 买特产</div>
+                <div class="option-desc">椰子糖、黄灯笼辣椒酱、咖啡</div>
+                <div class="option-tags">
+                    <span class="tag">购物</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 海边最后躺平</div>
+                <div class="option-desc">再晒一次太阳</div>
+                <div class="option-tags">
+                    <span class="tag">躺平</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">✈️ 返程 (12:00+)</div>
+            <div class="option">
+                <div class="option-title">前往三亚凤凰机场</div>
+                <div class="option-desc">提前2小时到机场</div>
+                <div class="option-tags">
+                    <span class="tag">返程</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Must Eat -->
+    <section class="cards-section" id="food">
+        <h2 class="section-title">🦀 必吃美食</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="椰子鸡" class="card-img">
+                    <span class="card-badge">🔥 必吃</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">椰子鸡火锅</div>
+                    <p class="card-desc">椰子水+文昌鸡，清甜爽口</p>
+                    <div class="card-meta">
+                        <span class="card-rating">⭐ 4.8</span>
+                        <span>💰 80元/人</span>
+                    </div>
+                    <div class="card-address">📍 三亚全市多家</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1565680018093-ebb6b9e5a234?w=600&q=80" alt="海鲜" class="card-img">
+                    <span class="card-badge">🦀 海鲜</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">第一市场海鲜</div>
+                    <p class="card-desc">买海鲜+加工，性价比高</p>
+                    <div class="card-meta">
+                        <span class="card-rating">⭐ 4.6</span>
+                        <span>💰 80元/人</span>
+                    </div>
+                    <div class="card-address">📍 三亚第一市场</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt="崖州菜" class="card-img">
+                    <span class="card-badge">🍽️ 地道</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">海宝酒家（崖州菜）</div>
+                    <p class="card-desc">32年老店，山捞叶炒鸡+酸豆鲜鱼汤</p>
+                    <div class="card-meta">
+                        <span class="card-rating">⭐ 4.9</span>
+                        <span>💰 50元/人</span>
+                    </div>
+                    <div class="card-address">📍 崖州区南山海小线3号</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="文昌鸡" class="card-img">
+                    <span class="card-badge">🐔 特色</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">文昌椰奶鸡</div>
+                    <p class="card-desc">文昌鸡+椰奶火锅，奶白香浓</p>
+                    <div class="card-meta">
+                        <span class="card-rating">⭐ 4.7</span>
+                        <span>💰 80元/人</span>
+                    </div>
+                    <div class="card-address">📍 文昌市区</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&q=80" alt="抱罗粉" class="card-img">
+                    <span class="card-badge">🍜 小吃</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">抱罗粉</div>
+                    <p class="card-desc">海南特色米粉，早餐首选</p>
+                    <div class="card-meta">
+                        <span class="card-rating">⭐ 4.4</span>
+                        <span>💰 15元/人</span>
+                    </div>
+                    <div class="card-address">📍 全岛早餐店</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?w=600&q=80" alt="清补凉" class="card-img">
+                    <span class="card-badge">🥥 甜品</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">清补凉</div>
+                    <p class="card-desc">椰奶+各种配料，解暑神器</p>
+                    <div class="card-meta">
+                        <span class="card-rating">⭐ 4.5</span>
+                        <span>💰 15元/碗</span>
+                    </div>
+                    <div class="card-address">📍 街边小店</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Must Visit -->
+    <section class="cards-section" id="attractions">
+        <h2 class="section-title">🏖️ 必去景点</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="亚龙湾" class="card-img">
+                    <span class="card-badge">🏖️ 必去</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">亚龙湾海滩</div>
+                    <p class="card-desc">天下第一湾，最美海滩</p>
+                    <div class="card-meta">
+                        <span>⏱️ 3-5小时</span>
+                        <span>💰 免费</span>
+                        <span>😴 轻松</span>
+                    </div>
+                    <div class="card-address">📍 三亚亚龙湾</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="森林公园" class="card-img">
+                    <span class="card-badge">🌿 网红</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">亚龙湾热带天堂森林公园</div>
+                    <p class="card-desc">雨林栈道+玻璃栈道+海景</p>
+                    <div class="card-meta">
+                        <span>⏱️ 3-4小时</span>
+                        <span>💰 158元</span>
+                        <span>😴 中等</span>
+                    </div>
+                    <div class="card-address">📍 三亚亚龙湾</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80" alt="小东海" class="card-img">
+                    <span class="card-badge">🐠 小众</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">小东海（玻璃海）</div>
+                    <p class="card-desc">人少水清，浮潜圣地，果冻海</p>
+                    <div class="card-meta">
+                        <span>⏱️ 2-3小时</span>
+                        <span>💰 免费</span>
+                        <span>😴 轻松</span>
+                    </div>
+                    <div class="card-address">📍 三亚小东海</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=600&q=80" alt="风车海滩" class="card-img">
+                    <span class="card-badge">🌬️ 拍照</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">抱虎角（风车海滩）</div>
+                    <p class="card-desc">风车+沙滩，文艺小众</p>
+                    <div class="card-meta">
+                        <span>⏱️ 1-2小时</span>
+                        <span>💰 免费</span>
+                        <span>😴 轻松</span>
+                    </div>
+                    <div class="card-address">📍 文昌抱虎角</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="鹿回头" class="card-img">
+                    <span class="card-badge">🌄 观景</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">鹿回头公园</div>
+                    <p class="card-desc">俯瞰三亚全景，日落绝佳</p>
+                    <div class="card-meta">
+                        <span>⏱️ 2小时</span>
+                        <span>💰 45元</span>
+                        <span>😴 轻松</span>
+                    </div>
+                    <div class="card-address">📍 三亚市区</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80" alt="清水湾" class="card-img">
+                    <span class="card-badge">🏖️ 小众</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">清水湾</div>
+                    <p class="card-desc">会唱歌的沙滩，人少沙细</p>
+                    <div class="card-meta">
+                        <span>⏱️ 2-3小时</span>
+                        <span>💰 免费</span>
+                        <span>😴 轻松</span>
+                    </div>
+                    <div class="card-address">📍 陵水清水湾</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section" id="map">
+        <h2 class="section-title">🗺️ 攻略地图</h2>
+        <div id="map-container"></div>
+        <div class="map-legend">
+            <span class="legend-item">🍽️ 美食</span>
+            <span class="legend-item">🏖️ 景点</span>
+            <span class="legend-item">🏨 住宿推荐</span>
+        </div>
+    </section>
+
+    <!-- Route Combinations -->
+    <section class="routes" id="routes">
+        <h2 class="section-title">🗺️ 推荐路线组合</h2>
+
+        <div class="route-card">
+            <div class="route-title">🎯 经典海滨路线</div>
+            <ul class="route-steps">
+                <li>Day1: 海口 → 文昌（抱虎角、石头山公园、椰奶鸡）</li>
+                <li>Day2: 文昌 → 三亚（小东海玻璃海、崖州菜）</li>
+                <li>Day3: 亚龙湾热带天堂森林公园 + 亚龙湾海滩躺平</li>
+                <li>Day4: 南湾猴岛 → 清水湾 → 返回三亚</li>
+                <li>Day5: 买特产 → 返程</li>
+            </ul>
+        </div>
+
+        <div class="route-card">
+            <div class="route-title">🤿 潜水探险路线</div>
+            <ul class="route-steps">
+                <li>Day1: 海口 → 文昌（海滩拍照）</li>
+                <li>Day2: 文昌 → 三亚 → 小东海浮潜（玻璃海）</li>
+                <li>Day3: 蜈支洲岛深潜 + 水上项目</li>
+                <li>Day4: 分界洲岛潜水 + 海钓</li>
+                <li>Day5: 返程</li>
+            </ul>
+        </div>
+
+        <div class="route-card">
+            <div class="route-title">🥥 美食躺平路线</div>
+            <ul class="route-steps">
+                <li>Day1: 文昌椰奶鸡 + 风车海滩</li>
+                <li>Day2: 椰子鸡火锅 + 三亚湾椰梦长廊</li>
+                <li>Day3: 海宝酒家崖州菜 + 亚龙湾躺平</li>
+                <li>Day4: 第一市场海鲜 + 清水湾</li>
+                <li>Day5: 清补凉 + 买特产 + 返程</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Budget -->
+    <section class="budget" id="budget">
+        <h2 class="section-title">💰 预算参考</h2>
+        <table class="budget-table">
+            <thead>
+                <tr>
+                    <th>消费类型</th>
+                    <th>省钱版</th>
+                    <th>舒适版</th>
+                    <th>豪华版</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>🏨 住宿</td>
+                    <td>150元/晚</td>
+                    <td>500元/晚</td>
+                    <td>1500元/晚</td>
+                </tr>
+                <tr>
+                    <td>🦀 餐饮</td>
+                    <td>100元/天</td>
+                    <td>200元/天</td>
+                    <td>400元/天</td>
+                </tr>
+                <tr>
+                    <td>🎫 门票</td>
+                    <td>200元</td>
+                    <td>500元</td>
+                    <td>1000元</td>
+                </tr>
+                <tr>
+                    <td>🚗 交通</td>
+                    <td>50元/天</td>
+                    <td>100元/天</td>
+                    <td>200元/天</td>
+                </tr>
+                <tr class="total-row">
+                    <td>💰 5天总计</td>
+                    <td>~2000元</td>
+                    <td>~4500元</td>
+                    <td>~9000元</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Warnings -->
+    <section class="warnings" id="warnings">
+        <h2 class="section-title">⚠️ 避雷提醒</h2>
+        <div class="warning-grid">
+            <div class="warning-card">
+                <h4>❌ 防晒必须SPF50+</h4>
+                <p>热带紫外线强，不涂防晒会晒伤脱皮</p>
+            </div>
+            <div class="warning-card">
+                <h4>❌ 避开9-10月台风季</h4>
+                <p>台风天航班取消、景点关闭，体验差</p>
+            </div>
+            <div class="warning-card">
+                <h4>❌ 海鲜别在景区吃</h4>
+                <p>去第一市场买+加工，便宜一半</p>
+            </div>
+            <div class="warning-card">
+                <h4>❌ 出租车可能绕路</h4>
+                <p>用滴滴/高德，看着点导航</p>
+            </div>
+            <div class="warning-card">
+                <h4>❌ 蜈支洲岛人多</h4>
+                <p>旺季排队2小时，提前网上买票</p>
+            </div>
+            <div class="warning-card">
+                <h4>❌ 驱蚊液必备</h4>
+                <p>热带蚊虫多，晚上出门带驱蚊液</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3>🦛 河马出品</h3>
+        <p>让旅行轻松一点 | 海南5日攻略</p>
+    </footer>
+
+    <script>
+        // Navigation visibility on scroll
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('visible');
+            } else {
+                nav.classList.remove('visible');
+            }
+        });
+
+        // 天数切换
+        function showDay(day) {
+            document.querySelectorAll('.day-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.day-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('day-' + day).classList.add('active');
+            document.querySelectorAll('.day-btn')[day - 1].classList.add('active');
+        }
+
+        // 初始化地图（需要高德地图 API Key）
+        if (typeof AMap !== 'undefined') {
+            var map = new AMap.Map('map-container', {
+                zoom: 9,
+                center: [110.328697, 19.231391], // 海南坐标
+                mapStyle: 'amap://styles/whitesmoke'
+            });
+
+            // 添加美食标记
+            var foodMarkers = [
+                { name: '海宝酒家', position: [109.172041, 18.306521] },
+                { name: '第一市场', position: [109.504939, 18.253581] }
+            ];
+
+            foodMarkers.forEach(item => {
+                new AMap.Marker({
+                    position: item.position,
+                    title: item.name,
+                    content: '<div style="background:#ffca28;color:white;padding:5px 10px;border-radius:20px;font-size:12px;white-space:nowrap;">🍽️ ' + item.name + '</div>'
+                }).setMap(map);
+            });
+
+            // 添加景点标记
+            var attractionMarkers = [
+                { name: '亚龙湾', position: [109.637098, 18.191829] },
+                { name: '小东海', position: [109.510488, 18.213724] },
+                { name: '抱虎角', position: [110.799409, 19.670437] }
+            ];
+
+            attractionMarkers.forEach(item => {
+                new AMap.Marker({
+                    position: item.position,
+                    title: item.name,
+                    content: '<div style="background:#1e88e5;color:white;padding:5px 10px;border-radius:20px;font-size:12px;white-space:nowrap;">🏖️ ' + item.name + '</div>'
+                }).setMap(map);
+            });
+
+            map.setFitView();
+        }
+    </script>
+</body>
+</html>
