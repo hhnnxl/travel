@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XX N日轻松攻略 | 吃喝玩乐躺平版 🦛</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* 自动根据城市类型选择配色 */
+            --primary: #1a5f4a;        /* 主色 */
+            --primary-light: #2d8a6e;  /* 主色浅 */
+            --secondary: #f5a623;      /* 辅色 */
+            --accent: #e74c3c;         /* 点缀色 */
+            --bg-light: #f8f9fa;
+            --bg-cream: #fefdfb;
+            --text-dark: #2c3e50;
+            --text-muted: #6c757d;
+            --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --card-hover: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Fixed Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav.visible {
+            transform: translateY(0);
+        }
+
+        .nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                gap: 1rem;
+                padding: 0.8rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(26, 95, 74, 0.85), rgba(45, 138, 110, 0.75)),
+                        url('https://images.unsplash.com/photo-XXX?w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, var(--bg-cream), transparent);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-tag {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s;
+        }
+
+        .hero-tag:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Overview Section */
+        .overview {
+            max-width: 1400px;
+            margin: -5rem auto 4rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .overview-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+        }
+
+        .overview-card:hover {
+            box-shadow: var(--card-hover);
+            transform: translateY(-5px);
+        }
+
+        .overview-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .overview-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .weather-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            padding: 0.5rem 0;
+            border-left: 3px solid var(--primary-light);
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Days Navigation */
+        .days-nav {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .day-btn {
+            padding: 1rem 2rem;
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .day-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .day-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .day-section {
+            display: none;
+        }
+
+        .day-section.active {
+            display: block;
+        }
+
+        .day-title {
+            font-size: 2.5rem;
+            font-family: 'Noto Serif SC', serif;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .day-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        .time-slot {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            border-left: 3px solid var(--primary-light);
+            position: relative;
+        }
+
+        .time-slot::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .time-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .option {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .option:hover {
+            transform: translateX(5px);
+            border-left-color: var(--secondary);
+        }
+
+        .option.recommended {
+            border-left-color: var(--secondary);
+            background: linear-gradient(to right, rgba(245, 166, 35, 0.05), white);
+        }
+
+        .option-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .option-title .badge {
+            background: var(--secondary);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+        }
+
+        .option-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .option-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--bg-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .tag.price {
+            background: rgba(245, 166, 35, 0.1);
+            color: var(--secondary);
+        }
+
+        /* Food & Attractions Grid */
+        .cards-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-family: 'Noto Serif SC', serif;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.1);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--secondary);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--bg-light);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .card-rating {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .card-address {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px dashed var(--bg-light);
+        }
+
+        /* Map Section */
+        .map-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        #map-container {
+            height: 500px;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            border: 2px solid var(--bg-light);
+        }
+
+        .map-legend {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .legend-item {
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            background: var(--bg-light);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Route Combinations */
+        .routes {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .route-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--secondary);
+            transition: all 0.3s;
+        }
+
+        .route-card:hover {
+            transform: translateX(5px);
+            box-shadow: var(--card-hover);
+        }
+
+        .route-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .route-steps {
+            list-style: none;
+        }
+
+        .route-steps li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .route-steps li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .route-steps li:hover {
+            color: var(--primary);
+        }
+
+        /* Budget Table */
+        .budget {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .budget-table {
+            width: 100%;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .budget-table th,
+        .budget-table td {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .budget-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .budget-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .budget-table tr:hover td {
+            background: var(--bg-light);
+        }
+
+        .budget-table tr.total-row {
+            font-weight: 700;
+            background: linear-gradient(to right, rgba(26, 95, 74, 0.05), rgba(45, 138, 110, 0.05));
+        }
+
+        .budget-table tr.total-row td {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Warnings */
+        .warnings {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .warning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .warning-card {
+            background: linear-gradient(135deg, #fff5f5, #ffffff);
+            border: 2px solid #feb2b2;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border-left: 5px solid #f56565;
+            transition: all 0.3s;
+        }
+
+        .warning-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(245, 101, 101, 0.2);
+        }
+
+        .warning-card h4 {
+            color: #c53030;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .warning-card p {
+            color: #742a2a;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .overview {
+                margin-top: -3rem;
+            }
+
+            .day-title,
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .days-nav {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .day-btn {
+                width: 100%;
+            }
+
+            .map-legend {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            #map-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="#overview">概览</a>
+        <a href="#day-1">Day 1</a>
+        <a href="#day-2">Day 2</a>
+        <a href="#day-3">Day 3</a>
+        <a href="#food">美食</a>
+        <a href="#attractions">景点</a>
+        <a href="#map">地图</a>
+        <a href="#routes">路线</a>
+        <a href="#budget">预算</a>
+        <a href="#warnings">避雷</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">🦛 河马出品 | N日轻松游</span>
+            <h1>XX</h1>
+            <p class="hero-subtitle">本地人推荐 · 不踩雷 · 轻松躺平</p>
+            <div class="hero-tags">
+                <span class="hero-tag">🍜 美食天堂</span>
+                <span class="hero-tag">🏞️ 小众景点</span>
+                <span class="hero-tag">😴 轻松不累</span>
+                <span class="hero-tag">💰 预算友好</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="overview" id="overview">
+        <div class="overview-grid">
+            <div class="overview-card">
+                <h3>🌸 最佳季节</h3>
+                <p>3-5月、9-11月</p>
+                <div class="weather-note">🌸 春季：15-25°C，薄外套</div>
+                <div class="weather-note">☀️ 夏季：25-35°C，防晒必备</div>
+                <div class="weather-note">🍂 秋季：15-28°C，早晚温差</div>
+                <div class="weather-note">❄️ 冬季：5-15°C，厚外套</div>
+            </div>
+            <div class="overview-card">
+                <h3>🚇 交通</h3>
+                <p>地铁+步行，打车备用</p>
+                <div class="weather-note">💡 机场/高铁 → 市区：XX元</div>
+                <div class="weather-note">💡 市内交通：地铁/公交/共享单车</div>
+            </div>
+            <div class="overview-card">
+                <h3>🏨 住宿</h3>
+                <p>市中心，交通便利</p>
+                <div class="weather-note">💰 省钱：青旅 80-120元</div>
+                <div class="weather-note">💰 舒适：酒店 200-400元</div>
+                <div class="weather-note">💰 豪华：高档 600+元</div>
+            </div>
+            <div class="overview-card">
+                <h3>🍜 必吃</h3>
+                <p>XX、XX、XX</p>
+                <div class="weather-note">🔥 本地人最爱：XX店</div>
+                <div class="weather-note">🔥 网红必打卡：XX店</div>
+            </div>
+            <div class="overview-card">
+                <h3>😴 累度</h3>
+                <p>轻松休闲，不赶路</p>
+                <div class="weather-note">⚡ 每天步行：8-12km</div>
+                <div class="weather-note">⚡ 体力要求：低</div>
+            </div>
+            <div class="overview-card">
+                <h3>📱 必备APP</h3>
+                <p>高德地图、大众点评</p>
+                <div class="weather-note">📲 导航：高德/百度地图</div>
+                <div class="weather-note">📲 美食：大众点评/美团</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Days Navigation -->
+    <div class="days-nav" id="timeline">
+        <button class="day-btn active" onclick="showDay(1)">Day 1</button>
+        <button class="day-btn" onclick="showDay(2)">Day 2</button>
+        <!-- 如果有更多天数，继续添加按钮 -->
+    </div>
+
+    <!-- Day 1 -->
+    <section class="timeline day-section active" id="day-1">
+        <h2 class="day-title">Day 1</h2>
+
+        <div class="time-slot">
+            <div class="time-label">🌅 早餐 (8:00-9:00)</div>
+            <div class="option recommended">
+                <div class="option-title">
+                    A. XX店 <span class="badge">推荐</span>
+                </div>
+                <div class="option-desc">本地人最爱，XX元/人，营业时间：6:00-14:00</div>
+                <div class="option-tags">
+                    <span class="tag">地道</span>
+                    <span class="tag">便宜</span>
+                    <span class="tag price">💰 20-30元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. XX店</div>
+                <div class="option-desc">网红店，XX元/人，可能排队</div>
+                <div class="option-tags">
+                    <span class="tag">网红</span>
+                    <span class="tag price">💰 30-40元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌤️ 上午 (9:00-12:00)</div>
+            <div class="option recommended">
+                <div class="option-title">
+                    A. XX景点 <span class="badge">推荐</span>
+                </div>
+                <div class="option-desc">小众景点，人少景美，2-3小时，门票XX元</div>
+                <div class="option-tags">
+                    <span class="tag">小众</span>
+                    <span class="tag">拍照</span>
+                    <span class="tag price">💰 免费/XX元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. XX博物馆</div>
+                <div class="option-desc">免费，周一闭馆，需预约</div>
+                <div class="option-tags">
+                    <span class="tag">免费</span>
+                    <span class="tag">室内</span>
+                    <span class="tag price">💰 0元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">☀️ 午餐 (12:00-13:30)</div>
+            <div class="option recommended">
+                <div class="option-title">
+                    A. XX餐厅 <span class="badge">推荐</span>
+                </div>
+                <div class="option-desc">必吃榜，XX元/人，建议12点前到</div>
+                <div class="option-tags">
+                    <span class="tag">必吃</span>
+                    <span class="tag">本地菜</span>
+                    <span class="tag price">💰 50-80元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌞 下午 (13:30-17:00)</div>
+            <div class="option">
+                <div class="option-title">A. XX街</div>
+                <div class="option-desc">逛吃逛吃，老城区，有很多小店</div>
+                <div class="option-tags">
+                    <span class="tag">逛街</span>
+                    <span class="tag">拍照</span>
+                    <span class="tag price">💰 随意</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 咖啡馆躺平</div>
+                <div class="option-desc">累了就休息，不勉强，推荐XX咖啡馆</div>
+                <div class="option-tags">
+                    <span class="tag">休息</span>
+                    <span class="tag">拍照</span>
+                    <span class="tag price">💰 30-50元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌆 晚餐 (17:00-19:00)</div>
+            <div class="option recommended">
+                <div class="option-title">
+                    A. XX夜市 <span class="badge">推荐</span>
+                </div>
+                <div class="option-desc">小吃一条街，边走边吃，营业到22:00</div>
+                <div class="option-tags">
+                    <span class="tag">夜市</span>
+                    <span class="tag">小吃</span>
+                    <span class="tag price">💰 40-60元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌙 夜间 (19:00-21:00)</div>
+            <div class="option">
+                <div class="option-title">A. XX江边散步</div>
+                <div class="option-desc">夜景很美，免费，适合拍照</div>
+                <div class="option-tags">
+                    <span class="tag">夜景</span>
+                    <span class="tag">免费</span>
+                    <span class="tag price">💰 0元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 回酒店休息</div>
+                <div class="option-desc">早点休息，明天继续</div>
+                <div class="option-tags">
+                    <span class="tag">休息</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 2 (复制 Day 1 结构并修改内容) -->
+    <section class="timeline day-section" id="day-2">
+        <h2 class="day-title">Day 2</h2>
+        <!-- 重复 Day 1 的结构 -->
+    </section>
+
+    <!-- Must Eat -->
+    <section class="cards-section" id="food">
+        <h2 class="section-title">🍜 必吃美食</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-XXX?w=600&q=80" alt="美食1" class="card-img">
+                    <span class="card-badge">🔥 必吃</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">XX</div>
+                    <p class="card-desc">描述文字，推荐理由</p>
+                    <div class="card-meta">
+                        <span class="card-rating">⭐ 4.8</span>
+                        <span>💰 XX元/人</span>
+                    </div>
+                    <div class="card-address">📍 地址：XX路XX号</div>
+                </div>
+            </div>
+            <!-- 重复5张卡片 -->
+        </div>
+    </section>
+
+    <!-- Must Visit -->
+    <section class="cards-section" id="attractions">
+        <h2 class="section-title">🏞️ 必去景点</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-XXX?w=600&q=80" alt="景点1" class="card-img">
+                    <span class="card-badge">🏞️ 推荐</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">XX</div>
+                    <p class="card-desc">描述文字，推荐理由</p>
+                    <div class="card-meta">
+                        <span>⏱️ 2-3小时</span>
+                        <span>💰 免费/XX元</span>
+                        <span>😴 轻松</span>
+                    </div>
+                    <div class="card-address">📍 地址：XX路XX号</div>
+                </div>
+            </div>
+            <!-- 重复5张卡片 -->
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section" id="map">
+        <h2 class="section-title">🗺️ 攻略地图</h2>
+        <div id="map-container"></div>
+        <div class="map-legend">
+            <span class="legend-item">🍽️ 美食</span>
+            <span class="legend-item">🏞️ 景点</span>
+            <span class="legend-item">🏨 住宿</span>
+        </div>
+    </section>
+
+    <!-- Route Combinations -->
+    <section class="routes" id="routes">
+        <h2 class="section-title">🗺️ 推荐路线组合</h2>
+
+        <div class="route-card">
+            <div class="route-title">🎯 经典打卡路线</div>
+            <ul class="route-steps">
+                <li>Day1: XX → XX → XX → XX</li>
+                <li>Day2: XX → XX → XX → XX</li>
+            </ul>
+        </div>
+
+        <div class="route-card">
+            <div class="route-title">🍜 吃货专属路线</div>
+            <ul class="route-steps">
+                <li>Day1: XX → XX → XX → XX</li>
+                <li>Day2: XX → XX → XX → XX</li>
+            </ul>
+        </div>
+
+        <div class="route-card">
+            <div class="route-title">🎨 文艺小众路线</div>
+            <ul class="route-steps">
+                <li>Day1: XX → XX → XX → XX</li>
+                <li>Day2: XX → XX → XX → XX</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Budget -->
+    <section class="budget" id="budget">
+        <h2 class="section-title">💰 预算参考</h2>
+        <table class="budget-table">
+            <thead>
+                <tr>
+                    <th>消费类型</th>
+                    <th>省钱版</th>
+                    <th>舒适版</th>
+                    <th>豪华版</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>🏨 住宿</td>
+                    <td>150元/晚</td>
+                    <td>300元/晚</td>
+                    <td>600元/晚</td>
+                </tr>
+                <tr>
+                    <td>🍜 餐饮</td>
+                    <td>100元/天</td>
+                    <td>200元/天</td>
+                    <td>400元/天</td>
+                </tr>
+                <tr>
+                    <td>🚗 交通</td>
+                    <td>30元/天</td>
+                    <td>50元/天</td>
+                    <td>100元/天</td>
+                </tr>
+                <tr>
+                    <td>🎫 门票</td>
+                    <td>50元</td>
+                    <td>100元</td>
+                    <td>200元</td>
+                </tr>
+                <tr class="total-row">
+                    <td>💰 N天总计</td>
+                    <td>~500元</td>
+                    <td>~1000元</td>
+                    <td>~2000元</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Warnings -->
+    <section class="warnings" id="warnings">
+        <h2 class="section-title">⚠️ 避雷提醒</h2>
+        <div class="warning-grid">
+            <div class="warning-card">
+                <h4>❌ XX景区别去</h4>
+                <p>人多坑多，性价比低</p>
+            </div>
+            <div class="warning-card">
+                <h4>❌ XX店是坑游客的</h4>
+                <p>本地人不去，贵且难吃</p>
+            </div>
+            <div class="warning-card">
+                <h4>❌ 打车要防绕路</h4>
+                <p>用导航看着点，别被坑</p>
+            </div>
+            <div class="warning-card">
+                <h4>❌ XX季节别去</h4>
+                <p>太热/太冷/人多，体验差</p>
+            </div>
+            <div class="warning-card">
+                <h4>❌ 住宿别选XX</h4>
+                <p>离市区远，交通不便</p>
+            </div>
+            <div class="warning-card">
+                <h4>❌ XX美食街别去</h4>
+                <p>全是游客店，不正宗</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3>🦛 河马出品</h3>
+        <p>让旅行轻松一点</p>
+        <div class="footer-links">
+            <a href="#top">回到顶部</a>
+            <a href="mailto:hippo@example.com">联系河马</a>
+        </div>
+    </footer>
+
+    <!-- 高德地图 JS API -->
+    <script src="https://webapi.amap.com/maps?v=2.0&key=YOUR_AMAP_KEY"></script>
+    <script>
+        // Navigation visibility on scroll
+        const nav = document.getElementById('nav');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('visible');
+            } else {
+                nav.classList.remove('visible');
+            }
+        });
+
+        // 天数切换
+        function showDay(day) {
+            // 隐藏所有天数
+            document.querySelectorAll('.day-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.day-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // 显示选中的天数
+            document.getElementById('day-' + day).classList.add('active');
+            document.querySelectorAll('.day-btn')[day - 1].classList.add('active');
+        }
+
+        // 初始化地图
+        var map = new AMap.Map('map-container', {
+            zoom: 13,
+            center: [119.306239, 26.075302], // 替换为城市坐标
+            mapStyle: 'amap://styles/whitesmoke'
+        });
+
+        // 添加美食标记
+        var foodMarkers = [
+            { name: 'XX店', position: [119.xxx, 26.xxx] },
+            // 添加更多美食位置
+        ];
+
+        foodMarkers.forEach(item => {
+            new AMap.Marker({
+                position: item.position,
+                title: item.name,
+                content: '<div style="background:#e74c3c;color:white;padding:5px 10px;border-radius:20px;font-size:12px;">🍽️ ' + item.name + '</div>'
+            }).setMap(map);
+        });
+
+        // 添加景点标记
+        var attractionMarkers = [
+            { name: 'XX景点', position: [119.xxx, 26.xxx] },
+            // 添加更多景点位置
+        ];
+
+        attractionMarkers.forEach(item => {
+            new AMap.Marker({
+                position: item.position,
+                title: item.name,
+                content: '<div style="background:#1a5f4a;color:white;padding:5px 10px;border-radius:20px;font-size:12px;">🏞️ ' + item.name + '</div>'
+            }).setMap(map);
+        });
+
+        // 自动调整视野
+        map.setFitView();
+    </script>
+</body>
+</html>
