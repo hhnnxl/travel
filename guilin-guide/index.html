@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桂林2日轻松攻略 | 山水甲天下躺平版 🦛</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e88e5;
+            --primary-light: #42a5f5;
+            --secondary: #ffca28;
+            --accent: #e74c3c;
+            --bg-light: #f8f9fa;
+            --bg-cream: #fefdfb;
+            --text-dark: #2c3e50;
+            --text-muted: #6c757d;
+            --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --card-hover: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(26, 95, 74, 0.85), rgba(45, 138, 110, 0.75)),
+                        url('https://images.unsplash.com/photo-1537531383496-f4749b8032cf?w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, var(--bg-cream), transparent);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 800px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        .hero-tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-tag {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-hint svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+            opacity: 0.7;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .nav.visible {
+            transform: translateY(0);
+        }
+        
+        .nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        .nav a:hover {
+            color: var(--primary);
+        }
+        /* 首页按钮特殊样式 */
+        .nav a.home-link {
+            background: var(--accent);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+            position: absolute;
+            left: 2rem;
+        }
+        
+        .nav a.home-link:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .section-divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        /* Quick Info Cards */
+        .quick-info {
+            background: var(--bg-light);
+            padding: 4rem 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover);
+        }
+        
+        .info-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .info-card h3 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        
+        /* Day Section */
+        .day-section {
+            padding: 5rem 0;
+        }
+        
+        .day-section:nth-child(even) {
+            background: var(--bg-light);
+        }
+        
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .day-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .day-title h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .day-title p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 15px;
+            height: 15px;
+            background: white;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            transform: translateX(-6px);
+        }
+        
+        .time-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .timeline-content {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .timeline-content h4 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Option Cards */
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .option-card {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 1.2rem;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+        }
+        
+        .option-card:hover {
+            transform: translateX(5px);
+            border-left-color: var(--secondary);
+        }
+        
+        .option-card .label {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .option-card h5 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: var(--text-dark);
+        }
+        
+        .option-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+        }
+        
+        .option-card .price {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* Food Section */
+        .food-section {
+            background: linear-gradient(135deg, #fff5e6, #ffe6cc);
+            padding: 5rem 0;
+        }
+        
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .food-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .food-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover);
+        }
+        
+        .food-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .food-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .food-card:hover .food-image img {
+            transform: scale(1.1);
+        }
+        
+        .food-content {
+            padding: 1.5rem;
+        }
+        
+        .food-tag {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .food-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .food-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        
+        .food-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .food-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
+        .food-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: var(--secondary);
+        }
+        
+        /* Attractions */
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .attraction-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .attraction-image {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .attraction-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .attraction-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .attraction-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .attraction-body h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .attraction-body p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+        
+        .attraction-info {
+            display: flex;
+            gap: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .attraction-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        /* Budget Table */
+        .budget-section {
+            background: var(--bg-light);
+            padding: 5rem 0;
+        }
+        
+        .budget-table {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .budget-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .budget-table th {
+            background: var(--primary);
+            color: white;
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .budget-table td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .budget-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .budget-table tr:hover td {
+            background: #f8f9fa;
+        }
+        
+        .budget-total {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
+        /* Tips Section */
+        .tips-section {
+            padding: 5rem 0;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .tip-card {
+            background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .tip-card h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tip-card p {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+        
+        /* Route Combinations */
+        .routes-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            padding: 5rem 0;
+            color: white;
+        }
+        
+        .routes-section .section-header h2 {
+            color: white;
+        }
+        
+        .routes-section .section-header p {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .routes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .route-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .route-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .route-day {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .route-day:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        
+        .route-day strong {
+            color: var(--secondary);
+        }
+        
+        
+        /* Map Section */
+        .map-section {
+            padding: 5rem 0;
+            background: var(--bg-light);
+        }
+        
+        .map-legend {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .legend-item {
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            background: var(--bg-light);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            user-select: none;
+        }
+        
+        .legend-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .legend-item.active {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .legend-item.inactive {
+            opacity: 0.4;
+        }
+        /* Map Section */
+        .map-section {
+            padding: 5rem 0;
+            background: var(--bg-light);
+        }
+        
+        .map-legend {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .legend-item {
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            background: var(--bg-light);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            user-select: none;
+        }
+        
+        .legend-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .legend-item.active {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .legend-item.inactive {
+            opacity: 0.4;
+        }
+
+        
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        footer p {
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                gap: 1rem;
+                padding: 0.8rem 1rem;
+                flex-wrap: wrap;
+            .nav a.home-link .home-text {
+                display: none;
+            }
+
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .day-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .timeline {
+                padding-left: 1.5rem;
+            }
+            
+            .timeline-item {
+                padding-left: 1.5rem;
+            }
+            
+            .option-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .budget-table {
+                overflow-x: auto;
+            }
+            
+            .budget-table table {
+                min-width: 500px;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            .nav, .scroll-hint {
+                display: none;
+            }
+            
+            .hero {
+                min-height: auto;
+                padding: 3rem 0;
+            }
+            
+            section {
+                padding: 2rem 0;
+            }
+        }
+    </style>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="https://hema.jasonchiw.cn/" class="home-link">🏠 <span class="home-text">首页</span></a>
+        <a href="#overview">概览</a>
+        <a href="#day1">Day 1</a>
+        <a href="#day2">Day 2</a>
+        <a href="#food">美食</a>
+        <a href="#attractions">景点</a>
+        <a href="#routes">推荐路线</a>
+        <a href="#budget">预算</a>
+        <a href="#tips">避雷</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">🦛 河马出品</span>
+            <h1>桂林2日轻松攻略</h1>
+            <p class="hero-subtitle">山水甲天下躺平版 · 不赶路 · 不爬山 · 吃到爽</p>
+            <div class="hero-tags">
+                <span class="hero-tag">📍 广西桂林</span>
+                <span class="hero-tag">⏱️ 2天1夜</span>
+                <span class="hero-tag">💰 人均900-1500</span>
+                <span class="hero-tag">🌊 山水休闲</span>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+        </div>
+    </header>
+
+    <!-- Quick Info -->
+    <section class="quick-info" id="overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>攻略概览</h2>
+                <div class="section-divider"></div>
+                <p>核心原则：累了就歇，饿了就吃，不赶时间</p>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">🌸</div>
+                    <h3>最佳季节</h3>
+                    <p>4-10月（烟雨漓江）</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🚗</div>
+                    <h3>交通方式</h3>
+                    <p>打车+游船+骑行</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🏨</div>
+                    <h3>住宿推荐</h3>
+                    <p>象鼻山公园/东街口附近</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🍜</div>
+                    <h3>必吃美食</h3>
+                    <p>桂林米粉、啤酒鱼</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">⭐</div>
+                    <h3>累度等级</h3>
+                    <p>⭐⭐ 休闲轻松</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📱</div>
+                    <h3>必备APP</h3>
+                    <p>e桂林 / 支付宝乘车码</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 1 -->
+    <section class="day-section" id="day1">
+        <div class="container">
+            <div class="day-header">
+                <div class="day-number">1</div>
+                <div class="day-title">
+                    <h2>Day 1 · 市区慢游 + 夜景</h2>
+                    <p>睡到自然醒，悠闲逛吃，晚上看江景</p>
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <!-- Morning -->
+                <div class="timeline-item">
+                    <span class="time-badge">🌅 上午 · 睡到自然醒</span>
+                    <div class="timeline-content">
+                        <h4>🍳 早餐选择</h4>
+                        <div class="option-grid">
+                            <div class="option-card">
+                                <span class="label">A</span>
+                                <h5>桂林米粉</h5>
+                                <p>卤水香浓，肉多料足，早餐必选</p>
+                                <span class="price">💰 10-15元</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">B</span>
+                                <h5>老东江米粉</h5>
+                                <p>本地人推荐，卤水香浓，配菜丰富</p>
+                                <span class="price">💰 30-50元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>🚶 上午活动</h4>
+                        <div class="option-grid">
+                            <div class="option-card">
+                                <span class="label">A</span>
+                                <h5>象鼻山公园</h5>
+                                <p>桂林城徽，清晨人少，适合拍照打卡</p>
+                                <span class="price">⏱️ 1.5h · ⭐</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">B</span>
+                                <h5>叠彩山</h5>
+                                <p>俯瞰桂林全景，走一段就撤，俯瞰城市</p>
+                                <span class="price">⏱️ 1-2h · ⭐⭐</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">C</span>
+                                <h5>继续睡</h5>
+                                <p>更刺激，但需体力，不勉强</p>
+                                <span class="price">⏱️ 无限 · ⭐</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Noon -->
+                <div class="timeline-item">
+                    <span class="time-badge">☀️ 中午</span>
+                    <div class="timeline-content">
+                        <h4>🍽️ 午餐选择</h4>
+                        <div class="option-grid">
+                            <div class="option-card">
+                                <span class="label">A · 米其林</span>
+                                <h5>椿记烧鹅</h5>
+                                <p>桂林老字号！烧鹅皮脆肉嫩，本地人爱</p>
+                                <span class="price">💰 150-200元</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">B · 黑珍珠</span>
+                                <h5>大师傅啤酒鱼</h5>
+                                <p>阳朔网红店馆，荔枝肉、醉排骨都不错、佛跳墙</p>
+                                <span class="price">💰 150-200元</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">C · 轻松</span>
+                                <h5>仁利米粉</h5>
+                                <p>明星打卡店，食材新鲜，花生汤也好喝</p>
+                                <span class="price">💰 50-80元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Afternoon -->
+                <div class="timeline-item">
+                    <span class="time-badge">🌤️ 下午</span>
+                    <div class="timeline-content">
+                        <h4>🎯 活动选择</h4>
+                        <div class="option-grid">
+                            <div class="option-card">
+                                <span class="label">A</span>
+                                <h5>芦笛岩</h5>
+                                <p>溶洞奇观，灯光绚丽，钟乳石千姿百态</p>
+                                <span class="price">⏱️ 2h · 🆓 免费</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">B</span>
+                                <h5>两江四湖夜游</h5>
+                                <p>乘船看夜景，日月双塔，比象鼻山公园人少，有咖啡馆</p>
+                                <span class="price">⏱️ 2h · ⭐</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">C</span>
+                                <h5>广西博物院</h5>
+                                <p>湖边散步，发呆惬意，免费，免费，人少安静</p>
+                                <span class="price">⏱️ 1.5h · 🆓 免费</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Evening -->
+                <div class="timeline-item">
+                    <span class="time-badge">🌙 晚上</span>
+                    <div class="timeline-content">
+                        <h4>🍽️ 晚餐选择</h4>
+                        <div class="option-grid">
+                            <div class="option-card">
+                                <span class="label">A · 氛围</span>
+                                <h5>大师傅啤酒鱼</h5>
+                                <p>阳朔招牌菜，鱼肉鲜嫩，啤酒味浓，气氛热络</p>
+                                <span class="price">💰 200-300元</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">B · 烟火气</span>
+                                <h5>正阳步行街</h5>
+                                <p>美食街，小吃种类多，本地人情味</p>
+                                <span class="price">💰 100-150元</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">C · 扫街</span>
+                                <h5>达明路美食街</h5>
+                                <p>边走边吃，市井气息，各种小吃</p>
+                                <span class="price">💰 50-100元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>✨ 夜间活动</h4>
+                        <div class="option-grid">
+                            <div class="option-card">
+                                <span class="label">A</span>
+                                <h5>象鼻山公园</h5>
+                                <p>桂林城徽，免费，清晨人少，适合拍照</p>
+                                <span class="price">💰 68元起</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">B</span>
+                                <h5>叠彩山俯瞰</h5>
+                                <p>象鼻山公园旁边的河边走走，视野绝佳</p>
+                                <span class="price">🆓 免费</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 2 -->
+    <section class="day-section" id="day2">
+        <div class="container">
+            <div class="day-header">
+                <div class="day-number">2</div>
+                <div class="day-title">
+                    <h2>Day 2 · 轻松郊游 + 温泉</h2>
+                    <p>缆车看古刹，张艺谋导演，山水实景，完美收尾</p>
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <!-- Morning -->
+                <div class="timeline-item">
+                    <span class="time-badge">🌅 上午</span>
+                    <div class="timeline-content">
+                        <h4>⛰️ 方案选择</h4>
+                        <div class="option-grid">
+                            <div class="option-card">
+                                <span class="label">A · 漓江游船</span>
+                                <h5>桂林→阳朔，4小时</h5>
+                                <p>三星游船270元，四星360元，九马画山、黄布倒影，沿途风景如画</p>
+                                <span class="price">⏱️ 3h · 💰 50元</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">B · 竹筏漂流</span>
+                                <h5>兴坪-九马画山段</h5>
+                                <p>更刺激，但需体力，约150元，2小时</p>
+                                <span class="price">⏱️ 无限 · 🆓</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Noon -->
+                <div class="timeline-item">
+                    <span class="time-badge">☀️ 中午</span>
+                    <div class="timeline-content">
+                        <h4>🍽️ 午餐选择</h4>
+                        <div class="option-grid">
+                            <div class="option-card">
+                                <span class="label">A</span>
+                                <h5>大师傅啤酒鱼</h5>
+                                <p>阳朔网红店，鱼肉鲜嫩，啤酒香味浓郁</p>
+                                <span class="price">💰 80-120元</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">B</span>
+                                <h5>谢三姐啤酒鱼</h5>
+                                <p>本地老店，性价比高，味道正宗</p>
+                                <span class="price">💰 100-150元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Afternoon -->
+                <div class="timeline-item">
+                    <span class="time-badge">🌤️ 下午</span>
+                    <div class="timeline-content">
+                        <h4>🎯 活动选择</h4>
+                        <div class="option-grid">
+                            <div class="option-card">
+                                <span class="label">A</span>
+                                <h5>十里画廊骑行</h5>
+                                <p>租电动车，50元/天，田园山水，月亮山沿途</p>
+                                <span class="price">⏱️ 2h · 🆓 免费</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">B</span>
+                                <h5>阳朔西街</h5>
+                                <p>中西合璧，酒吧餐厅林立，夜生活丰富，热闹好玩</p>
+                                <span class="price">⏱️ 1.5h · ⭐</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">C · 推荐</span>
+                                <h5>印象·刘三姐</h5>
+                                <p>张艺谋导演，山水实景，震撼视觉盛宴，200-680元，1小时</p>
+                                <span class="price">⏱️ 2-3h · 💰 138元起</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">D</span>
+                                <h5>遇龙河竹筏</h5>
+                                <p>美如画，像加滤镜，骥马~工农桥，约150元</p>
+                                <span class="price">⏱️ 1.5h · ⭐</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Evening -->
+                <div class="timeline-item">
+                    <span class="time-badge">🌙 晚上 · 最后的晚餐</span>
+                    <div class="timeline-content">
+                        <h4>🍽️ 收尾大餐</h4>
+                        <div class="option-grid">
+                            <div class="option-card">
+                                <span class="label">A</span>
+                                <h5>西街酒吧街</h5>
+                                <p>喝酒、听歌、蹦迪，热闹非凡，人均100元</p>
+                                <span class="price">💰 120-150元</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">B</span>
+                                <h5>阳朔夜市</h5>
+                                <p>广西菜，买点特产，人均30元</p>
+                                <span class="price">💰 150-200元</span>
+                            </div>
+                            <div class="option-card">
+                                <span class="label">C · 念念不忘</span>
+                                <h5>漓江游船上吃</h5>
+                                <p>四星船含自助餐，省事省心</p>
+                                <span class="price">💰 50元</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Section -->
+    <section class="food-section" id="food">
+        <div class="container">
+            <div class="section-header">
+                <h2>🍜 必吃美食</h2>
+                <div class="section-divider"></div>
+                <p>本地人认证，避开游客陷阱</p>
+            </div>
+            <div class="food-grid">
+                <div class="food-card">
+                    <div class="food-image">
+                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80" alt="捞化">
+                    </div>
+                    <div class="food-content">
+                        <span class="food-tag">🏆 本地人推荐</span>
+                        <h3>老东江米粉 / 荣记捞化</h3>
+                        <p>桂林版米线，食材多达几十种。卤水香浓，配菜丰富，汤头鲜美</p>
+                        <div class="food-meta">
+                            <span class="food-price">¥30-80</span>
+                            <span class="food-rating">⭐⭐⭐⭐⭐</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="food-card">
+                    <div class="food-image">
+                        <img src="https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?w=600&q=80" alt="福清菜">
+                    </div>
+                    <div class="food-content">
+                        <span class="food-tag">⭐ 桂林老字号</span>
+                        <h3>椿记烧鹅</h3>
+                        <p>海蛎饼现炸、炸糟鳗、大黄鱼滑汤、鸭露配烤紫菜，地道福清味</p>
+                        <div class="food-meta">
+                            <span class="food-price">¥150-200</span>
+                            <span class="food-rating">⭐⭐⭐⭐⭐</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="food-card">
+                    <div class="food-image">
+                        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=600&q=80" alt="日料">
+                    </div>
+                    <div class="food-content">
+                        <span class="food-tag">🔥 阳朔招牌菜</span>
+                        <h3>大师傅啤酒鱼</h3>
+                        <p>1800㎡独栋，鱼肉鲜嫩，啤酒味浓（刺身级别现烤），蓝鳍金枪鱼下巴绝了</p>
+                        <div class="food-meta">
+                            <span class="food-price">¥200-300</span>
+                            <span class="food-rating">⭐⭐⭐⭐⭐</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="food-card">
+                    <div class="food-image">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="闽菜">
+                    </div>
+                    <div class="food-content">
+                        <span class="food-tag">💎 黑珍珠/必吃榜</span>
+                        <h3>大师傅啤酒鱼</h3>
+                        <p>阳朔网红店馆，荔枝肉、醉排骨都不错，佛跳墙、红糟鸡</p>
+                        <div class="food-meta">
+                            <span class="food-price">¥150-200</span>
+                            <span class="food-rating">⭐⭐⭐⭐⭐</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="food-card">
+                    <div class="food-image">
+                        <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&q=80" alt="小吃">
+                    </div>
+                    <div class="food-content">
+                        <span class="food-tag">🏠 老字号</span>
+                        <h3>锅边糊 + 油条</h3>
+                        <p>桂林早餐标配，米浆做的，配油条蘸着吃，本地人从小吃到大</p>
+                        <div class="food-meta">
+                            <span class="food-price">¥10-15</span>
+                            <span class="food-rating">⭐⭐⭐⭐</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="food-card">
+                    <div class="food-image">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=600&q=80" alt="火锅">
+                    </div>
+                    <div class="food-content">
+                        <span class="food-tag">🔥 本地人最爱</span>
+                        <h3>正阳步行街</h3>
+                        <p>美食街，小吃种类多，烟火气十足，桂林人情味的缩影</p>
+                        <div class="food-meta">
+                            <span class="food-price">¥100-150</span>
+                            <span class="food-rating">⭐⭐⭐⭐</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attractions Section -->
+    <section class="attractions-section" id="attractions">
+        <div class="container">
+            <div class="section-header">
+                <h2>🏛️ 必去景点</h2>
+                <div class="section-divider"></div>
+                <p>不累身体，轻松逛完</p>
+            </div>
+            <div class="attractions-grid">
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://images.unsplash.com/photo-1545893835-abaa50cbe628?w=600&q=80" alt="福道">
+                        <span class="attraction-badge">🌍 国家地理提名</span>
+                    </div>
+                    <div class="attraction-body">
+                        <h3>福道（金牛山城市森林步道）</h3>
+                        <p>世界十大最美步道之一，19公里环线，走多少都行，免费，俯瞰城市全景</p>
+                        <div class="attraction-info">
+                            <span class="attraction-info-item">⏱️ 1-3h</span>
+                            <span class="attraction-info-item">🆓 免费</span>
+                            <span class="attraction-info-item">⭐ 轻松</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?w=600&q=80" alt="鼓山">
+                        <span class="attraction-badge">🏔️ 缆车上下</span>
+                    </div>
+                    <div class="attraction-body">
+                        <h3>鼓山 + 涌泉寺</h3>
+                        <p>缆车上山，九马画山、黄布倒影（783年始建），吃素斋，不用爬山，轻松惬意</p>
+                        <div class="attraction-info">
+                            <span class="attraction-info-item">⏱️ 3h</span>
+                            <span class="attraction-info-item">💰 50元</span>
+                            <span class="attraction-info-item">⭐ 轻松</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=600&q=80" alt="闽江">
+                        <span class="attraction-badge">🚢 夜游首选</span>
+                    </div>
+                    <div class="attraction-body">
+                        <h3>象鼻山公园</h3>
+                        <p>桂林城徽，免费，清晨人少，适合拍照，解放大桥、金山大桥夜景绝美</p>
+                        <div class="attraction-info">
+                            <span class="attraction-info-item">⏱️ 1.5h</span>
+                            <span class="attraction-info-item">💰 68元起</span>
+                            <span class="attraction-info-item">⭐ 躺平</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=600&q=80" alt="公园">
+                        <span class="attraction-badge">🌳 本地人日常</span>
+                    </div>
+                    <div class="attraction-body">
+                        <h3>芦笛岩</h3>
+                        <p>溶洞奇观，灯光绚丽，免费，钟乳石千姿百态，很chill</p>
+                        <div class="attraction-info">
+                            <span class="attraction-info-item">⏱️ 2h</span>
+                            <span class="attraction-info-item">🆓 免费</span>
+                            <span class="attraction-info-item">⭐ 轻松</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?w=600&q=80" alt="老街">
+                        <span class="attraction-badge">📸 热闹好玩</span>
+                    </div>
+                    <div class="attraction-body">
+                        <h3>上下杭 + 仓山老洋房</h3>
+                        <p>老商帮街区+领事馆老建筑，比象鼻山公园人少，有咖啡馆小店，适合拍照</p>
+                        <div class="attraction-info">
+                            <span class="attraction-info-item">⏱️ 2-3h</span>
+                            <span class="attraction-info-item">🆓 免费</span>
+                            <span class="attraction-info-item">⭐ 轻松</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=600&q=80" alt="温泉">
+                        <span class="attraction-badge">♨️ 放松首选</span>
+                    </div>
+                    <div class="attraction-body">
+                        <h3>印象·刘三姐</h3>
+                        <p>震撼视觉盛宴，200-680元，1小时，提前订票，必看演出，演出结束回桂林</p>
+                        <div class="attraction-info">
+                            <span class="attraction-info-item">⏱️ 2-3h</span>
+                            <span class="attraction-info-item">💰 138元起</span>
+                            <span class="attraction-info-item">⭐ 躺平</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Routes Section -->
+    <section class="routes-section" id="routes">
+        <div class="container">
+            <div class="section-header">
+                <h2>🗺️ 推荐路线组合</h2>
+                <div class="section-divider"></div>
+                <p>三种风格，任你选择</p>
+            </div>
+            <div class="routes-grid">
+                <div class="route-card">
+                    <h3>🎯 组合A · 经典竹筏漂流</h3>
+                    <div class="route-day">
+                        <strong>Day 1</strong><br>
+                        锅边糊 → 象鼻山公园 → 大师傅啤酒鱼 → 西湖公园划船 → 象鼻山公园
+                    </div>
+                    <div class="route-day">
+                        <strong>Day 2</strong><br>
+                        睡懒觉 → 大师傅啤酒鱼 → 仓山老洋房 → 源脉温泉
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <h3>🍜 组合B · 山水田园版</h3>
+                    <div class="route-day">
+                        <strong>Day 1</strong><br>
+                        老东江米粉 → 上下杭 → 荣记捞化 → 达明路扫街 → 叠彩山俯瞰
+                    </div>
+                    <div class="route-day">
+                        <strong>Day 2</strong><br>
+                        鼓山素斋 → 大师傅啤酒鱼日料 → 十里画廊骑行 → 再吃捞化
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <h3>🎨 组合C · 轻松躺平版</h3>
+                    <div class="route-day">
+                        <strong>Day 1</strong><br>
+                        兴坪-九马画山段 → 福道走走 → 广西博物院 → 大师傅啤酒鱼居酒屋
+                    </div>
+                    <div class="route-day">
+                        <strong>Day 2</strong><br>
+                        醉福园福清菜 → 上下杭咖啡馆 → 象鼻山公园
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Section -->
+    <section class="budget-section" id="budget">
+        <div class="container">
+            <div class="section-header">
+                <h2>💰 预算参考</h2>
+                <div class="section-divider"></div>
+                <p>2人2天，丰俭由人</p>
+            </div>
+            <div class="budget-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>档次</th>
+                            <th>餐饮</th>
+                            <th>住宿（/晚）</th>
+                            <th>交通</th>
+                            <th>总计（2人2天）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>省钱版</strong></td>
+                            <td>300元</td>
+                            <td>200元</td>
+                            <td>100元</td>
+                            <td class="budget-total">~800元</td>
+                        </tr>
+                        <tr>
+                            <td><strong>舒适版</strong></td>
+                            <td>600元</td>
+                            <td>400元</td>
+                            <td>150元</td>
+                            <td class="budget-total">~1500元</td>
+                        </tr>
+                        <tr>
+                            <td><strong>豪华版</strong></td>
+                            <td>1000元</td>
+                            <td>800元</td>
+                            <td>200元</td>
+                            <td class="budget-total">~2800元</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="tips-section" id="tips">
+        <div class="container">
+            <div class="section-header">
+                <h2>⚠️ 避雷提醒</h2>
+                <div class="section-divider"></div>
+                <p>这些坑千万别踩</p>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4>🚫 别在象鼻山公园里面吃</h4>
+                    <p>旺季当天订不到好位置，建议提前1天在美团/携程预订</p>
+                </div>
+                <div class="tip-card">
+                    <h4>⏰ 印象刘三姐也提前订</h4>
+                    <p>热门演出，临时买不到好位置，甚至没票，提前订，建议提前1-2天订票</p>
+                </div>
+                <div class="tip-card">
+                    <h4>🚠 西街酒吧价格高</h4>
+                    <p>有些酒吧宰客，先问清楚价格再点单，避免被坑</p>
+                </div>
+                <div class="tip-card">
+                    <h4>📸 十里画廊注意安全</h4>
+                    <p>骑行注意来往车辆，桂林好吃的店很多，租电动车最省力</p>
+                </div>
+                <div class="tip-card">
+                    <h4>🌅 景区特产别乱买</h4>
+                    <p>景区价格虚高，特产去超市或正规店买，桂花糕、罗汉果实惠</p>
+                </div>
+                <div class="tip-card">
+                    <h4>🛒 带好防晒和雨具</h4>
+                    <p>景区的"桂林特产"溢价严重，防晒霜、遮阳伞、雨衣都要带</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">🦛</div>
+            <p>河马出品 · 祝你玩得开心</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">记住：出来玩是放松的，累了就歇，饿了就吃，不赶时间 💚</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation visibility on scroll
+        const nav = document.getElementById('nav');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 300) {
+                nav.classList.add('visible');
+            } else {
+                nav.classList.remove('visible');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.info-card, .food-card, .attraction-card, .tip-card, .route-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+
+    <script>
+        // Initialize Leaflet Map
+        const map = L.map('map-container').setView([25.2744, 110.299], 13);
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        
+        // Custom marker icons
+        const foodIcon = L.divIcon({
+            className: 'custom-marker',
+            html: '<div style="background: #e74c3c; color: white; padding: 5px 10px; border-radius: 20px; font-size: 14px; font-weight: bold;">🍜</div>',
+            iconSize: [30, 30]
+        });
+        
+        const attractionIcon = L.divIcon({
+            className: 'custom-marker',
+            html: '<div style="background: #1a5f4a; color: white; padding: 5px 10px; border-radius: 20px; font-size: 14px; font-weight: bold;">🏛️</div>',
+            iconSize: [30, 30]
+        });
+        
+        // Store markers by category
+        const markerGroups = {
+            food: [],
+            attractions: []
+        };
+        
+        // Food markers
+        const foodMarkers = [
+            { coords: [25.2744, 110.299], name: '桂林米粉', desc: '正宗米粉' },
+            { coords: [25.2789, 110.3012], name: '啤酒鱼', desc: '阳朔特色' },
+            { coords: [25.2698, 110.2956], name: '桂林卤味', desc: '本地小吃' },
+            { coords: [25.2812, 110.3034], name: '桂林油茶', desc: '特色早餐' },
+            { coords: [25.2756, 110.2987], name: '荔浦芋扣肉', desc: '传统名菜' },
+            { coords: [25.2701, 110.2967], name: '阳朔啤酒鱼', desc: '必吃美食' }
+        ];
+        
+        foodMarkers.forEach(marker => {
+            const m = L.marker(marker.coords, { icon: foodIcon })
+                .addTo(map)
+                .bindPopup(`<strong>${marker.name}</strong><br>${marker.desc}`);
+            markerGroups.food.push(m);
+        });
+        
+        // Attraction markers
+        const attractionMarkers = [
+            { coords: [25.2744, 110.299], name: '象鼻山', desc: '桂林城徽' },
+            { coords: [25.2698, 110.2956], name: '两江四湖', desc: '夜景游船' },
+            { coords: [24.7817, 110.4925], name: '阳朔西街', desc: '洋人街' },
+            { coords: [24.8145, 110.4823], name: '十里画廊', desc: '骑行路线' },
+            { coords: [25.2812, 110.3034], name: '龙脊梯田', desc: '壮美梯田' },
+            { coords: [25.2756, 110.2987], name: '漓江', desc: '山水画廊' }
+        ];
+        
+        attractionMarkers.forEach(marker => {
+            const m = L.marker(marker.coords, { icon: attractionIcon })
+                .addTo(map)
+                .bindPopup(`<strong>${marker.name}</strong><br>${marker.desc}`);
+            markerGroups.attractions.push(m);
+        });
+        
+        // Toggle markers function
+        function toggleMarkers(category) {
+            const legendItem = event.target;
+            const isActive = legendItem.classList.contains('active');
+            
+            if (isActive) {
+                legendItem.classList.remove('active');
+                legendItem.classList.add('inactive');
+                markerGroups[category].forEach(marker => marker.remove());
+            } else {
+                legendItem.classList.remove('inactive');
+                legendItem.classList.add('active');
+                markerGroups[category].forEach(marker => marker.addTo(map));
+            }
+        }
+    </script>
+</body>
+</html>
