@@ -896,7 +896,7 @@
         <a href="#food">美食</a>
         <a href="#attractions">景点</a>
         <a href="#map">地图</a>
-        <a href="#routes">推荐路线</a>
+        <a href="#routes">路线</a>
         <a href="#budget">预算</a>
         <a href="#tips">避雷</a>
     </nav>
@@ -1478,6 +1478,24 @@
         </div>
     </section>
 
+    <!-- Map Section -->
+    <section class="map-section" id="map">
+        <div class="container">
+            <h2 class="section-title">📍 美食地图</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">点击标记查看详情</p>
+            <div id="map-container" style="height: 500px; border-radius: 1rem; overflow: hidden; box-shadow: var(--card-shadow);"></div>
+            
+            <!-- Map Legend -->
+            <div class="map-legend">
+                <div class="legend-item active" onclick="toggleMarkers('food')">
+                    🍜 美食
+                </div>
+                <div class="legend-item active" onclick="toggleMarkers('attractions')">
+                    🏛️ 景点
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Routes Section -->
     <section class="routes-section" id="routes">
         <div class="container">
@@ -1527,24 +1545,6 @@
     </section>
 
 
-    <!-- Map Section -->
-    <section class="map-section" id="map">
-        <div class="container">
-            <h2 class="section-title">📍 美食地图</h2>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">点击标记查看详情</p>
-            <div id="map-container" style="height: 500px; border-radius: 1rem; overflow: hidden; box-shadow: var(--card-shadow);"></div>
-            
-            <!-- Map Legend -->
-            <div class="map-legend">
-                <div class="legend-item active" onclick="toggleMarkers('food')">
-                    🍜 美食
-                </div>
-                <div class="legend-item active" onclick="toggleMarkers('attractions')">
-                    🏛️ 景点
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- Budget Section -->
     <section class="budget-section" id="budget">
         <div class="container">
