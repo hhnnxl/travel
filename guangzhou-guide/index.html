@@ -480,6 +480,28 @@
             border-radius: 50px;
             background: var(--bg-light);
             font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            user-select: none;
+        }
+
+        .legend-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .legend-item.active {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .legend-item.inactive {
+            opacity: 0.4;
+        }
+            background: var(--bg-light);
+            font-weight: 500;
         }
 
         /* Route Combinations */
@@ -1187,9 +1209,8 @@
         <h2 class="section-title">🗺️ 攻略地图</h2>
         <div id="map-container"></div>
         <div class="map-legend">
-            <span class="legend-item">🍽️ 美食</span>
-            <span class="legend-item">🏛️ 景点</span>
-            <span class="legend-item">☕ 咖啡馆</span>
+            <span class="legend-item active" onclick="toggleMarkers('food', this)" id="legend-food">🍽️ 美食</span>
+            <span class="legend-item active" onclick="toggleMarkers('attraction', this)" id="legend-attraction">🏛️ 景点</span>
         </div>
     </section>
 
@@ -1337,16 +1358,25 @@
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        // 添加美食标记
+        // 存储标记对象（用于分类切换）
+        var markerGroups = {
+            food: [],
+            attraction: []
+        };
+
+        // 添加美食标记（包含咖啡馆）
         var foodMarkers = [
             { name: '荣华楼', lat: 23.125056, lng: 113.244283 },
             { name: '点都德', lat: 23.115789, lng: 113.234890 },
-            { name: '南园酒家', lat: 23.092345, lng: 113.282678 }
+            { name: '南园酒家', lat: 23.092345, lng: 113.282678 },
+            { name: '玫瑰咖啡', lat: 23.128765, lng: 113.265432 },
+            { name: 'M Stand', lat: 23.123456, lng: 113.234567 }
         ];
 
         foodMarkers.forEach(item => {
-            L.marker([item.lat, item.lng]).addTo(map)
+            var marker = L.marker([item.lat, item.lng]).addTo(map)
                 .bindPopup('🍽️ ' + item.name);
+            markerGroups.food.push(marker);
         });
 
         // 添加景点标记
@@ -1358,26 +1388,33 @@
         ];
 
         attractionMarkers.forEach(item => {
-            L.marker([item.lat, item.lng]).addTo(map)
+            var marker = L.marker([item.lat, item.lng]).addTo(map)
                 .bindPopup('🏛️ ' + item.name);
+            markerGroups.attraction.push(marker);
         });
 
-        // 添加咖啡馆标记
-        var cafeMarkers = [
-            { name: '玫瑰咖啡', lat: 23.128765, lng: 113.265432 },
-            { name: 'M Stand', lat: 23.123456, lng: 113.234567 }
-        ];
-
-        cafeMarkers.forEach(item => {
-            L.marker([item.lat, item.lng]).addTo(map)
-                .bindPopup('☕ ' + item.name);
-        });
+        // 切换标记显示/隐藏
+        function toggleMarkers(type, element) {
+            var markers = markerGroups[type];
+            var isVisible = element.classList.contains('active');
+            
+            if (isVisible) {
+                // 隐藏标记
+                markers.forEach(marker => map.removeLayer(marker));
+                element.classList.remove('active');
+                element.classList.add('inactive');
+            } else {
+                // 显示标记
+                markers.forEach(marker => marker.addTo(map));
+                element.classList.remove('inactive');
+                element.classList.add('active');
+            }
+        }
 
         // 自动调整视野
         var allMarkers = [
             ...foodMarkers.map(m => [m.lat, m.lng]),
-            ...attractionMarkers.map(m => [m.lat, m.lng]),
-            ...cafeMarkers.map(m => [m.lat, m.lng])
+            ...attractionMarkers.map(m => [m.lat, m.lng])
         ];
         if (allMarkers.length > 0) {
             map.fitBounds(allMarkers, { padding: [50, 50] });
