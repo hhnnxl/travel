@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>河马攻略导航 | 旅游攻略合集 🦛</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5d4037;
+            --primary-light: #8d6e63;
+            --accent: #d4a853;
+            --bg-cream: #fefdfb;
+            --text-dark: #2c3e50;
+            --text-muted: #6c757d;
+            --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --card-hover: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 50vh;
+            background: linear-gradient(135deg, rgba(93, 64, 55, 0.9), rgba(141, 110, 99, 0.8)),
+                        url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: -4rem auto 4rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Stats */
+        .stats {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 2.5rem;
+            font-family: 'Noto Serif SC', serif;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Guides Grid */
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .guide-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover);
+        }
+
+        .guide-img-wrapper {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .guide-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .guide-card:hover .guide-img {
+            transform: scale(1.1);
+        }
+
+        .guide-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .guide-body {
+            padding: 1.5rem;
+        }
+
+        .guide-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .guide-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .guide-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .guide-version {
+            background: var(--bg-cream);
+            padding: 0.3rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+        }
+
+        .guide-version.v2 {
+            background: rgba(212, 168, 83, 0.1);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            .stats { flex-direction: column; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero -->
+    <section class="hero">
+        <div>
+            <h1>🦛 河马攻略导航</h1>
+            <p>轻松旅行，从一份好攻略开始</p>
+        </div>
+    </section>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="guide-count">0</div>
+                <div class="stat-label">城市攻略</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">v2.0</div>
+                <div class="stat-label">最新版本</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">🦛</div>
+                <div class="stat-label">河马出品</div>
+            </div>
+        </div>
+
+        <!-- Guides -->
+        <h2 class="section-title">🗺️ 攻略合集</h2>
+        <div class="guides-grid" id="guides-container">
+            <!-- JavaScript will populate this -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3>🦛 河马出品</h3>
+        <p>让旅行轻松一点</p>
+    </footer>
+
+    <script>
+        // 攻略数据（自动从文件夹读取）
+        const guides = [
+            {
+                title: '北京3日轻松攻略',
+                desc: '古都风韵 · 小众胡同 · 地道京味',
+                days: 3,
+                path: './beijing-guide/',
+                image: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=600&q=80',
+                version: 'v2.0',
+                features: ['地图集成', '天气模块', '智能配色']
+            },
+            {
+                title: '福州2日轻松攻略',
+                desc: '三坊七巷 · 闽江夜景 · 地道闽菜',
+                days: 2,
+                path: './fuzhou-guide/',
+                image: 'https://images.unsplash.com/photo-1537531383496-f4749b8032cf?w=600&q=80',
+                version: 'v1.0',
+                features: ['经典设计', '完整攻略']
+            },
+            {
+                title: '长沙2日轻松攻略',
+                desc: '火辣湘菜 · 岳麓山 · 橘子洲头',
+                days: 2,
+                path: './changsha-guide/',
+                image: 'https://images.unsplash.com/photo-1517309230475-6736d926b979?w=600&q=80',
+                version: 'v1.0',
+                features: ['经典设计', '完整攻略']
+            },
+            {
+                title: '桂林2日轻松攻略',
+                desc: '山水甲天下 · 漓江竹筏 · 阳朔西街',
+                days: 2,
+                path: './guilin-guide/',
+                image: 'https://images.unsplash.com/photo-1537531383496-f4749b8032cf?w=600&q=80',
+                version: 'v1.0',
+                features: ['经典设计', '完整攻略']
+            },
+            {
+                title: '杭州2日轻松攻略',
+                desc: '西湖十景 · 龙井问茶 · 河坊街',
+                days: 2,
+                path: './hangzhou-guide/',
+                image: 'https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?w=600&q=80',
+                version: 'v1.0',
+                features: ['经典设计', '完整攻略']
+            }
+        ];
+
+        // 渲染攻略卡片
+        function renderGuides() {
+            const container = document.getElementById('guides-container');
+            const countEl = document.getElementById('guide-count');
+
+            countEl.textContent = guides.length;
+
+            guides.forEach(guide => {
+                const card = document.createElement('a');
+                card.href = guide.path;
+                card.className = 'guide-card';
+
+                const versionClass = guide.version === 'v2.0' ? 'guide-version v2' : 'guide-version';
+
+                card.innerHTML = `
+                    <div class="guide-img-wrapper">
+                        <img src="${guide.image}" alt="${guide.title}" class="guide-img">
+                        <span class="guide-badge">${guide.days}日攻略</span>
+                    </div>
+                    <div class="guide-body">
+                        <div class="guide-title">${guide.title}</div>
+                        <div class="guide-desc">${guide.desc}</div>
+                        <div class="guide-meta">
+                            <span class="${versionClass}">${guide.version}</span>
+                            <span>${guide.features.join(' · ')}</span>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        // 页面加载时渲染
+        renderGuides();
+    </script>
+</body>
+</html>
