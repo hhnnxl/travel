@@ -8,6 +8,11 @@
       "pid": 190271
     }
   ],
+  "github_pages": {
+    "url": "https://hhnnxl.github.io/travel/",
+    "repo": "https://github.com/hhnnxl/travel",
+    "enabled": true
+  },
   "port_range": {
     "min": 8300,
     "max": 8500
