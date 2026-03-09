@@ -646,6 +646,9 @@
             #map-container { height: 350px; }
         }
     </style>
+    <!-- Leaflet 地图（免费，无需 API Key） -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -1326,60 +1329,58 @@
             document.querySelectorAll('.day-btn')[day - 1].classList.add('active');
         }
 
-        // 初始化地图（需要高德地图 API Key）
-        if (typeof AMap !== 'undefined') {
-            var map = new AMap.Map('map-container', {
-                zoom: 12,
-                center: [113.264385, 23.129112], // 广州坐标
-                mapStyle: 'amap://styles/whitesmoke'
-            });
+        // 初始化地图（Leaflet + OpenStreetMap，免费无需 API Key）
+        var map = L.map('map-container').setView([23.129112, 113.264385], 13);
 
-            // 添加美食标记
-            var foodMarkers = [
-                { name: '荣华楼', position: [113.244283, 23.125056] },
-                { name: '点都德', position: [113.234890, 23.115789] },
-                { name: '南园酒家', position: [113.282678, 23.092345] }
-            ];
+        // 添加地图图层
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
 
-            foodMarkers.forEach(item => {
-                new AMap.Marker({
-                    position: item.position,
-                    title: item.name,
-                    content: '<div style="background:#f39c12;color:white;padding:5px 10px;border-radius:20px;font-size:12px;white-space:nowrap;">🍽️ ' + item.name + '</div>'
-                }).setMap(map);
-            });
+        // 添加美食标记
+        var foodMarkers = [
+            { name: '荣华楼', lat: 23.125056, lng: 113.244283 },
+            { name: '点都德', lat: 23.115789, lng: 113.234890 },
+            { name: '南园酒家', lat: 23.092345, lng: 113.282678 }
+        ];
 
-            // 添加景点标记
-            var attractionMarkers = [
-                { name: '陈家祠', position: [113.244283, 23.125056] },
-                { name: '永庆坊', position: [113.234567, 23.123456] },
-                { name: '东山口', position: [113.289765, 23.134567] },
-                { name: '沙面', position: [113.234567, 23.112345] }
-            ];
+        foodMarkers.forEach(item => {
+            L.marker([item.lat, item.lng]).addTo(map)
+                .bindPopup('🍽️ ' + item.name);
+        });
 
-            attractionMarkers.forEach(item => {
-                new AMap.Marker({
-                    position: item.position,
-                    title: item.name,
-                    content: '<div style="background:#e74c3c;color:white;padding:5px 10px;border-radius:20px;font-size:12px;white-space:nowrap;">🏛️ ' + item.name + '</div>'
-                }).setMap(map);
-            });
+        // 添加景点标记
+        var attractionMarkers = [
+            { name: '陈家祠', lat: 23.125056, lng: 113.244283 },
+            { name: '永庆坊', lat: 23.123456, lng: 113.234567 },
+            { name: '东山口', lat: 23.134567, lng: 113.289765 },
+            { name: '沙面', lat: 23.112345, lng: 113.234567 }
+        ];
 
-            // 添加咖啡馆标记
-            var cafeMarkers = [
-                { name: '玫瑰咖啡', position: [113.265432, 23.128765] },
-                { name: 'M Stand', position: [113.234567, 23.123456] }
-            ];
+        attractionMarkers.forEach(item => {
+            L.marker([item.lat, item.lng]).addTo(map)
+                .bindPopup('🏛️ ' + item.name);
+        });
 
-            cafeMarkers.forEach(item => {
-                new AMap.Marker({
-                    position: item.position,
-                    title: item.name,
-                    content: '<div style="background:#8e44ad;color:white;padding:5px 10px;border-radius:20px;font-size:12px;white-space:nowrap;">☕ ' + item.name + '</div>'
-                }).setMap(map);
-            });
+        // 添加咖啡馆标记
+        var cafeMarkers = [
+            { name: '玫瑰咖啡', lat: 23.128765, lng: 113.265432 },
+            { name: 'M Stand', lat: 23.123456, lng: 113.234567 }
+        ];
 
-            map.setFitView();
+        cafeMarkers.forEach(item => {
+            L.marker([item.lat, item.lng]).addTo(map)
+                .bindPopup('☕ ' + item.name);
+        });
+
+        // 自动调整视野
+        var allMarkers = [
+            ...foodMarkers.map(m => [m.lat, m.lng]),
+            ...attractionMarkers.map(m => [m.lat, m.lng]),
+            ...cafeMarkers.map(m => [m.lat, m.lng])
+        ];
+        if (allMarkers.length > 0) {
+            map.fitBounds(allMarkers, { padding: [50, 50] });
         }
     </script>
 </body>

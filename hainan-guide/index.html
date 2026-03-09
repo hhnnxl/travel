@@ -646,6 +646,9 @@
             #map-container { height: 350px; }
         }
     </style>
+    <!-- Leaflet 地图（免费，无需 API Key） -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -1475,44 +1478,41 @@
             document.querySelectorAll('.day-btn')[day - 1].classList.add('active');
         }
 
-        // 初始化地图（需要高德地图 API Key）
-        if (typeof AMap !== 'undefined') {
-            var map = new AMap.Map('map-container', {
-                zoom: 9,
-                center: [110.328697, 19.231391], // 海南坐标
-                mapStyle: 'amap://styles/whitesmoke'
-            });
+        // 初始化地图（Leaflet + OpenStreetMap，免费无需 API Key）
+        var map = L.map('map-container').setView([19.231391, 110.328697], 8);
 
-            // 添加美食标记
-            var foodMarkers = [
-                { name: '海宝酒家', position: [109.172041, 18.306521] },
-                { name: '第一市场', position: [109.504939, 18.253581] }
-            ];
+        // 添加地图图层
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
 
-            foodMarkers.forEach(item => {
-                new AMap.Marker({
-                    position: item.position,
-                    title: item.name,
-                    content: '<div style="background:#ffca28;color:white;padding:5px 10px;border-radius:20px;font-size:12px;white-space:nowrap;">🍽️ ' + item.name + '</div>'
-                }).setMap(map);
-            });
+        // 添加美食标记
+        var foodMarkers = [
+            { name: '海宝酒家', lat: 18.306521, lng: 109.172041 },
+            { name: '第一市场', lat: 18.253581, lng: 109.504939 }
+        ];
 
-            // 添加景点标记
-            var attractionMarkers = [
-                { name: '亚龙湾', position: [109.637098, 18.191829] },
-                { name: '小东海', position: [109.510488, 18.213724] },
-                { name: '抱虎角', position: [110.799409, 19.670437] }
-            ];
+        foodMarkers.forEach(item => {
+            L.marker([item.lat, item.lng]).addTo(map)
+                .bindPopup('🍽️ ' + item.name);
+        });
 
-            attractionMarkers.forEach(item => {
-                new AMap.Marker({
-                    position: item.position,
-                    title: item.name,
-                    content: '<div style="background:#1e88e5;color:white;padding:5px 10px;border-radius:20px;font-size:12px;white-space:nowrap;">🏖️ ' + item.name + '</div>'
-                }).setMap(map);
-            });
+        // 添加景点标记
+        var attractionMarkers = [
+            { name: '亚龙湾', lat: 18.191829, lng: 109.637098 },
+            { name: '小东海', lat: 18.213724, lng: 109.510488 },
+            { name: '抱虎角', lat: 19.670437, lng: 110.799409 }
+        ];
 
-            map.setFitView();
+        attractionMarkers.forEach(item => {
+            L.marker([item.lat, item.lng]).addTo(map)
+                .bindPopup('🏖️ ' + item.name);
+        });
+
+        // 自动调整视野
+        var allMarkers = [...foodMarkers.map(m => [m.lat, m.lng]), ...attractionMarkers.map(m => [m.lat, m.lng])];
+        if (allMarkers.length > 0) {
+            map.fitBounds(allMarkers, { padding: [50, 50] });
         }
     </script>
 </body>
