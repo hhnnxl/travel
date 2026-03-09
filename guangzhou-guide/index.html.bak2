@@ -521,55 +521,54 @@
         }
 
         /* Route Combinations */
-        .routes-section {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            padding: 5rem 0;
-            color: white;
-        }
-        
-        .routes-section .section-title {
-            color: white;
-        }
-        
-        .routes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+        .routes {
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 4rem auto;
             padding: 0 2rem;
         }
-        
-        .route-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .route-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .route-day {
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .route-day:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-bottom: 0;
-        }
-        
-        .route-day strong {
-            color: var(--accent);
-        }
-        
 
+        .route-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .route-card:hover {
+            transform: translateX(5px);
+            box-shadow: var(--card-hover);
+        }
+
+        .route-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .route-steps {
+            list-style: none;
+        }
+
+        .route-steps li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .route-steps li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Budget Table */
         .budget {
             max-width: 900px;
             margin: 4rem auto;
@@ -617,37 +616,44 @@
         }
 
         /* Warnings */
-        .warnings-section {
-            padding: 5rem 0;
-        }
-        
-        .warnings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+        .warnings {
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 4rem auto;
             padding: 0 2rem;
         }
-        
-        .warning-card {
-            background: linear-gradient(135deg, #fff5f5, #ffe8e8);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border-left: 4px solid var(--accent);
-        }
-        
-        .warning-card h4 {
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-        
-        .warning-card p {
-            color: var(--text-dark);
-            font-size: 0.95rem;
-        }
-        
 
+        .warning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .warning-card {
+            background: linear-gradient(135deg, #fff5f5, #ffffff);
+            border: 2px solid #feb2b2;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border-left: 5px solid #f56565;
+            transition: all 0.3s;
+        }
+
+        .warning-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(245, 101, 101, 0.2);
+        }
+
+        .warning-card h4 {
+            color: #c53030;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .warning-card p {
+            color: #742a2a;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
         footer {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
