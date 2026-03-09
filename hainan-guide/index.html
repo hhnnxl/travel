@@ -64,9 +64,23 @@
         @media (max-width: 768px) {
             .nav { gap: 0.8rem; padding: 0.8rem 1rem; font-size: 0.85rem; }
         }
+        .nav a:hover {
+            color: var(--primary);
+        }
 
-        /* Hero Section */
-        .hero {
+        /* 首页按钮特殊样式 */
+        .nav a.home-link {
+            background: var(--accent);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .nav a.home-link:hover {
+            background: var(--primary);
+            color: white;
+        }
             min-height: 100vh;
             background: linear-gradient(135deg, rgba(30, 136, 229, 0.85), rgba(66, 165, 245, 0.75)),
                         url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80') center/cover;
@@ -672,6 +686,7 @@
 <body>
     <!-- Navigation -->
     <nav class="nav" id="nav">
+        <a href="https://hema.jasonchiw.cn/" class="home-link">🏠 首页</a>
         <a href="#overview">概览</a>
         <a href="#timeline">行程</a>
         <a href="#food">美食</a>
