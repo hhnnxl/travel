@@ -237,7 +237,7 @@
                 <div class="stat-label">城市攻略</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">v2.0</div>
+                <div class="stat-number">v2.1</div>
                 <div class="stat-label">最新版本</div>
             </div>
             <div class="stat-item">
@@ -330,7 +330,7 @@
                 card.href = guide.path;
                 card.className = 'guide-card';
 
-                const versionClass = guide.version === 'v2.0' ? 'guide-version v2' : 'guide-version';
+                const versionClass = guide.version.startsWith('v2') ? 'guide-version v2' : 'guide-version';
 
                 card.innerHTML = `
                     <div class="guide-img-wrapper">
