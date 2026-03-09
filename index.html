@@ -322,8 +322,19 @@
         function renderGuides() {
             const container = document.getElementById('guides-container');
             const countEl = document.getElementById('guide-count');
+            const versionEl = document.querySelector('.stat-item:nth-child(2) .stat-number');
 
             countEl.textContent = guides.length;
+
+            // 自动计算最新版本号
+            const latestVersion = guides.reduce((max, guide) => {
+                const version = parseFloat(guide.version.replace('v', ''));
+                return version > max ? version : max;
+            }, 0);
+            
+            if (versionEl) {
+                versionEl.textContent = 'v' + latestVersion.toFixed(1);
+            }
 
             guides.forEach(guide => {
                 const card = document.createElement('a');
