@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北京3日轻松攻略 | 吃喝玩乐躺平版 🦛</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* 古都城市配色 - 北京 */
+            --primary: #5d4037;        /* 古棕 */
+            --primary-light: #8d6e63;  /* 主色浅 */
+            --secondary: #6d4c41;      /* 辅色 */
+            --accent: #d4a853;         /* 金色 */
+            --bg-light: #f8f9fa;
+            --bg-cream: #fefdfb;
+            --text-dark: #2c3e50;
+            --text-muted: #6c757d;
+            --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --card-hover: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(93, 64, 55, 0.85), rgba(141, 110, 99, 0.75)),
+                        url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, var(--bg-cream), transparent);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-tag {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s;
+        }
+
+        .hero-tag:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Overview Section */
+        .overview {
+            max-width: 1400px;
+            margin: -5rem auto 4rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .overview-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+        }
+
+        .overview-card:hover {
+            box-shadow: var(--card-hover);
+            transform: translateY(-5px);
+        }
+
+        .overview-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .overview-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .weather-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            padding: 0.5rem 0;
+            border-left: 3px solid var(--primary-light);
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Days Navigation */
+        .days-nav {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .day-btn {
+            padding: 1rem 2rem;
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .day-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .day-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .day-section {
+            display: none;
+        }
+
+        .day-section.active {
+            display: block;
+        }
+
+        .day-title {
+            font-size: 2.5rem;
+            font-family: 'Noto Serif SC', serif;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .day-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        .time-slot {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            border-left: 3px solid var(--primary-light);
+            position: relative;
+        }
+
+        .time-slot::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .time-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .option {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .option:hover {
+            transform: translateX(5px);
+            border-left-color: var(--accent);
+        }
+
+        .option.recommended {
+            border-left-color: var(--accent);
+            background: linear-gradient(to right, rgba(212, 168, 83, 0.05), white);
+        }
+
+        .option-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .option-title .badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+        }
+
+        .option-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .option-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--bg-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .tag.price {
+            background: rgba(212, 168, 83, 0.1);
+            color: var(--accent);
+        }
+
+        /* Food & Attractions Grid */
+        .cards-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-family: 'Noto Serif SC', serif;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.1);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--bg-light);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .card-rating {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .card-address {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px dashed var(--bg-light);
+        }
+
+        /* Map Section */
+        .map-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        #map-container {
+            height: 500px;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            border: 2px solid var(--bg-light);
+        }
+
+        .map-legend {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .legend-item {
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            background: var(--bg-light);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Route Combinations */
+        .routes {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .route-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .route-card:hover {
+            transform: translateX(5px);
+            box-shadow: var(--card-hover);
+        }
+
+        .route-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .route-steps {
+            list-style: none;
+        }
+
+        .route-steps li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .route-steps li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Budget Table */
+        .budget {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .budget-table {
+            width: 100%;
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .budget-table th,
+        .budget-table td {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--bg-light);
+        }
+
+        .budget-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .budget-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .budget-table tr:hover td {
+            background: var(--bg-light);
+        }
+
+        .budget-table tr.total-row {
+            font-weight: 700;
+            background: linear-gradient(to right, rgba(93, 64, 55, 0.05), rgba(141, 110, 99, 0.05));
+        }
+
+        .budget-table tr.total-row td {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Warnings */
+        .warnings {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .warning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .warning-card {
+            background: linear-gradient(135deg, #fff5f5, #ffffff);
+            border: 2px solid #feb2b2;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border-left: 5px solid #f56565;
+            transition: all 0.3s;
+        }
+
+        .warning-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(245, 101, 101, 0.2);
+        }
+
+        .warning-card h4 {
+            color: #c53030;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .warning-card p {
+            color: #742a2a;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+        }
+
+        footer h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .overview { margin-top: -3rem; }
+            .day-title, .section-title { font-size: 2rem; }
+            .days-nav { flex-direction: column; align-items: stretch; }
+            .day-btn { width: 100%; }
+            .map-legend { flex-direction: column; gap: 1rem; }
+            #map-container { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">🦛 河马出品 | 3日轻松游</span>
+            <h1>北京</h1>
+            <p class="hero-subtitle">古都风韵 · 小众胡同 · 地道京味</p>
+            <div class="hero-tags">
+                <span class="hero-tag">🏯 古都文化</span>
+                <span class="hero-tag">🍜 京味美食</span>
+                <span class="hero-tag">🚶 胡同漫步</span>
+                <span class="hero-tag">📸 轻松拍照</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="overview">
+        <div class="overview-grid">
+            <div class="overview-card">
+                <h3>🌸 最佳季节</h3>
+                <p>3-5月、9-11月</p>
+                <div class="weather-note">🌸 春季：10-20°C，风大，戴口罩</div>
+                <div class="weather-note">☀️ 夏季：25-35°C，炎热，防晒</div>
+                <div class="weather-note">🍂 秋季：10-25°C，最美季节</div>
+                <div class="weather-note">❄️ 冬季：-5-5°C，寒冷，羽绒服</div>
+            </div>
+            <div class="overview-card">
+                <h3>🚇 交通</h3>
+                <p>地铁+步行，早晚高峰避开</p>
+                <div class="weather-note">💡 机场快轨：25元，25分钟到市区</div>
+                <div class="weather-note">💡 地铁：3-10元，下载"亿通行"APP</div>
+            </div>
+            <div class="overview-card">
+                <h3>🏨 住宿</h3>
+                <p>东城区/西城区，交通便利</p>
+                <div class="weather-note">💰 省钱：青旅 100-150元</div>
+                <div class="weather-note">💰 舒适：酒店 300-500元</div>
+                <div class="weather-note">💰 豪华：四合院 800+元</div>
+            </div>
+            <div class="overview-card">
+                <h3>🍜 必吃</h3>
+                <p>烤鸭、炸酱面、豆汁焦圈</p>
+                <div class="weather-note">🔥 本地人爱：护国寺小吃</div>
+                <div class="weather-note">🔥 网红必吃：四季民福烤鸭</div>
+            </div>
+            <div class="overview-card">
+                <h3>😴 累度</h3>
+                <p>轻松休闲，步行为主</p>
+                <div class="weather-note">⚡ 每天步行：8-12km</div>
+                <div class="weather-note">⚡ 体力要求：中低</div>
+            </div>
+            <div class="overview-card">
+                <h3>📱 必备APP</h3>
+                <p>高德地图、大众点评、亿通行</p>
+                <div class="weather-note">📲 地铁：亿通行（扫码进站）</div>
+                <div class="weather-note">📲 美食：大众点评（看评分）</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Days Navigation -->
+    <div class="days-nav">
+        <button class="day-btn active" onclick="showDay(1)">Day 1</button>
+        <button class="day-btn" onclick="showDay(2)">Day 2</button>
+        <button class="day-btn" onclick="showDay(3)">Day 3</button>
+    </div>
+
+    <!-- Day 1 -->
+    <section class="timeline day-section active" id="day-1">
+        <h2 class="day-title">Day 1 | 什刹海胡同慢逛</h2>
+
+        <div class="time-slot">
+            <div class="time-label">🌅 早餐 (8:00-9:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 护国寺小吃（地安门店）<span class="badge">推荐</span></div>
+                <div class="option-desc">老北京早点，豆汁焦圈、面茶、豌豆黄，20元/人，营业：6:00-20:00</div>
+                <div class="option-tags">
+                    <span class="tag">地道</span>
+                    <span class="tag">便宜</span>
+                    <span class="tag price">💰 20元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 姚记炒肝（鼓楼店）</div>
+                <div class="option-desc">炒肝+包子，老北京特色，25元/人</div>
+                <div class="option-tags">
+                    <span class="tag">特色</span>
+                    <span class="tag price">💰 25元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌤️ 上午 (9:00-12:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 恭王府<span class="badge">推荐</span></div>
+                <div class="option-desc">和珅府邸，清代最大王府，人少景美，2-3小时，门票40元</div>
+                <div class="option-tags">
+                    <span class="tag">历史</span>
+                    <span class="tag">拍照</span>
+                    <span class="tag price">💰 40元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 什刹海滑冰（冬季）</div>
+                <div class="option-desc">11月-2月，冰车+冰刀，30元/小时</div>
+                <div class="option-tags">
+                    <span class="tag">冬季</span>
+                    <span class="tag">体验</span>
+                    <span class="tag price">💰 30元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">☀️ 午餐 (12:00-13:30)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 烤肉季（什刹海店）<span class="badge">推荐</span></div>
+                <div class="option-desc">老字号，烤羊肉，80元/人，建议提前排队</div>
+                <div class="option-tags">
+                    <span class="tag">老字号</span>
+                    <span class="tag">烤肉</span>
+                    <span class="tag price">💰 80元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 烟袋斜街小吃</div>
+                <div class="option-desc">炸酱面、爆肚、糖葫芦，边走边吃</div>
+                <div class="option-tags">
+                    <span class="tag">小吃</span>
+                    <span class="tag price">💰 40元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌞 下午 (13:30-17:00)</div>
+            <div class="option">
+                <div class="option-title">A. 南锣鼓巷漫步</div>
+                <div class="option-desc">文艺胡同，小店+咖啡，人多但值得逛</div>
+                <div class="option-tags">
+                    <span class="tag">文艺</span>
+                    <span class="tag">逛街</span>
+                    <span class="tag price">💰 随意</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 北锣鼓巷（小众）</div>
+                <div class="option-desc">人少安静，花墙拍照，The Bake Shop面包</div>
+                <div class="option-tags">
+                    <span class="tag">小众</span>
+                    <span class="tag">拍照</span>
+                    <span class="tag price">💰 随意</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">C. 咖啡馆休息</div>
+                <div class="option-desc">累了就歇，推荐：VOYAGE COFFEE</div>
+                <div class="option-tags">
+                    <span class="tag">休息</span>
+                    <span class="tag price">💰 40元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌆 晚餐 (17:00-19:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 四季民福烤鸭（故宫店）<span class="badge">推荐</span></div>
+                <div class="option-desc">故宫景观位，烤鸭+故宫夜景，150元/人，需提前2天预约</div>
+                <div class="option-tags">
+                    <span class="tag">网红</span>
+                    <span class="tag">景观</span>
+                    <span class="tag price">💰 150元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 海底捞（东四店）</div>
+                <div class="option-desc">不累的话吃火锅，100元/人</div>
+                <div class="option-tags">
+                    <span class="tag">火锅</span>
+                    <span class="tag price">💰 100元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌙 夜间 (19:00-21:00)</div>
+            <div class="option">
+                <div class="option-title">A. 后海酒吧街</div>
+                <div class="option-desc">夜景很美，听歌喝酒，消费较高</div>
+                <div class="option-tags">
+                    <span class="tag">夜景</span>
+                    <span class="tag">酒吧</span>
+                    <span class="tag price">💰 100+元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 回酒店休息</div>
+                <div class="option-desc">早点休息，明天继续</div>
+                <div class="option-tags">
+                    <span class="tag">休息</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 2 -->
+    <section class="timeline day-section" id="day-2">
+        <h2 class="day-title">Day 2 | 故宫+小众公园</h2>
+
+        <div class="time-slot">
+            <div class="time-label">🌅 早餐 (8:00-9:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 庆丰包子铺<span class="badge">推荐</span></div>
+                <div class="option-desc">老字号，猪肉大葱包子+紫米粥，15元/人</div>
+                <div class="option-tags">
+                    <span class="tag">便宜</span>
+                    <span class="tag">地道</span>
+                    <span class="tag price">💰 15元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌤️ 上午 (9:00-12:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 故宫博物院<span class="badge">必去</span></div>
+                <div class="option-desc">紫禁城，提前7天预约！3小时，门票60元</div>
+                <div class="option-tags">
+                    <span class="tag">历史</span>
+                    <span class="tag">必去</span>
+                    <span class="tag price">💰 60元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 景山公园</div>
+                <div class="option-desc">登顶看故宫全景，1小时，门票2元</div>
+                <div class="option-tags">
+                    <span class="tag">观景</span>
+                    <span class="tag">便宜</span>
+                    <span class="tag price">💰 2元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">☀️ 午餐 (12:00-13:30)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 故宫角楼咖啡<span class="badge">网红</span></div>
+                <div class="option-desc">故宫文创咖啡，拍照圣地，60元/人</div>
+                <div class="option-tags">
+                    <span class="tag">拍照</span>
+                    <span class="tag">咖啡</span>
+                    <span class="tag price">💰 60元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 全聚德烤鸭（前门店）</div>
+                <div class="option-desc">老字号，烤鸭套餐，120元/人</div>
+                <div class="option-tags">
+                    <span class="tag">老字号</span>
+                    <span class="tag price">💰 120元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌞 下午 (13:30-17:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 三里河公园（首都小江南）<span class="badge">小众</span></div>
+                <div class="option-desc">前门附近，免费，小桥流水+黑天鹅，1-2小时</div>
+                <div class="option-tags">
+                    <span class="tag">免费</span>
+                    <span class="tag">拍照</span>
+                    <span class="tag price">💰 0元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 北坞公园（京西小江南）</div>
+                <div class="option-desc">海淀，皇家稻田+颐和园远景，免费，2小时</div>
+                <div class="option-tags">
+                    <span class="tag">免费</span>
+                    <span class="tag">小众</span>
+                    <span class="tag price">💰 0元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">C. 798艺术区</div>
+                <div class="option-desc">工业风+艺术展，免费，2-3小时</div>
+                <div class="option-tags">
+                    <span class="tag">艺术</span>
+                    <span class="tag">拍照</span>
+                    <span class="tag price">💰 0元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌆 晚餐 (17:00-19:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 海底捞（三里屯店）<span class="badge">推荐</span></div>
+                <div class="option-desc">三里屯逛街后吃火锅，100元/人</div>
+                <div class="option-tags">
+                    <span class="tag">火锅</span>
+                    <span class="tag price">💰 100元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌙 夜间 (19:00-21:00)</div>
+            <div class="option">
+                <div class="option-title">A. 三里屯太古里</div>
+                <div class="option-desc">逛街+夜景，时尚地标</div>
+                <div class="option-tags">
+                    <span class="tag">逛街</span>
+                    <span class="tag">夜景</span>
+                    <span class="tag price">💰 随意</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 回酒店休息</div>
+                <div class="option-desc">明天还有一天，不勉强</div>
+                <div class="option-tags">
+                    <span class="tag">休息</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 3 -->
+    <section class="timeline day-section" id="day-3">
+        <h2 class="day-title">Day 3 | 小众秘境+返程</h2>
+
+        <div class="time-slot">
+            <div class="time-label">🌅 早餐 (8:00-9:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 护国寺小吃<span class="badge">推荐</span></div>
+                <div class="option-desc">再来一次，试试没吃过的，20元/人</div>
+                <div class="option-tags">
+                    <span class="tag">地道</span>
+                    <span class="tag price">💰 20元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌤️ 上午 (9:00-12:00)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 齐物潭公园（海淀小江南）<span class="badge">小众</span></div>
+                <div class="option-desc">亭台楼阁+梅花鹿，免费，地铁16号线直达，2小时</div>
+                <div class="option-tags">
+                    <span class="tag">免费</span>
+                    <span class="tag">小众</span>
+                    <span class="tag">梅花鹿</span>
+                    <span class="tag price">💰 0元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 北宫国家森林公园</div>
+                <div class="option-desc">红叶（秋季），比香山人少，门票10元，3小时</div>
+                <div class="option-tags">
+                    <span class="tag">自然</span>
+                    <span class="tag">红叶</span>
+                    <span class="tag price">💰 10元</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">C. 天坛公园</div>
+                <div class="option-desc">祈年殿，经典打卡，门票15元，2小时</div>
+                <div class="option-tags">
+                    <span class="tag">经典</span>
+                    <span class="tag price">💰 15元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">☀️ 午餐 (12:00-13:30)</div>
+            <div class="option recommended">
+                <div class="option-title">A. 前门大街小吃<span class="badge">推荐</span></div>
+                <div class="option-desc">老字号集中，全聚德、东来顺、稻香村，50元/人</div>
+                <div class="option-tags">
+                    <span class="tag">老字号</span>
+                    <span class="tag">小吃</span>
+                    <span class="tag price">💰 50元</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌞 下午 (13:30-17:00)</div>
+            <div class="option">
+                <div class="option-title">A. 前门大街+大栅栏</div>
+                <div class="option-desc">老北京商业街，买伴手礼，免费</div>
+                <div class="option-tags">
+                    <span class="tag">逛街</span>
+                    <span class="tag">伴手礼</span>
+                    <span class="tag price">💰 随意</span>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-title">B. 返程准备</div>
+                <div class="option-desc">收拾行李，去机场/火车站</div>
+                <div class="option-tags">
+                    <span class="tag">返程</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="time-slot">
+            <div class="time-label">🌙 返程 (17:00+)</div>
+            <div class="option">
+                <div class="option-title">前往机场/火车站</div>
+                <div class="option-desc">提前2-3小时出发，地铁最靠谱</div>
+                <div class="option-tags">
+                    <span class="tag">返程</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Must Eat -->
+    <section class="cards-section">
+        <h2 class="section-title">🍜 必吃美食</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=600&q=80" alt="烤鸭" class="card-img">
+                    <span class="card-badge">🔥 必吃</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">四季民福烤鸭</div>
+                    <p class="card-desc">故宫景观位，烤鸭皮酥肉嫩，需提前2天预约</p>
+                    <div class="card-meta">
+                        <span class="card-rating">⭐ 4.9</span>
+                        <span>💰 150元/人</span>
+                    </div>
+                    <div class="card-address">📍 东城区东华门大街95号</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=600&q=80" alt="炸酱面" class="card-img">
+                    <span class="card-badge">🍜 地道</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">老北京炸酱面</div>
+                    <p class="card-desc">手擀面+炸酱+菜码，地道京味</p>
+                    <div class="card-meta">
+                        <span class="card-rating">⭐ 4.6</span>
+                        <span>💰 30元/人</span>
+                    </div>
+                    <div class="card-address">📍 烟袋斜街/护国寺街</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1509358271058-cd4afc8b3a4d?w=600&q=80" alt="豆汁" class="card-img">
+                    <span class="card-badge">🥢 特色</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">豆汁焦圈</div>
+                    <p class="card-desc">老北京早点，豆汁酸爽，焦圈酥脆，爱恨分明</p>
+                    <div class="card-meta">
+                        <span class="card-rating">⭐ 4.2</span>
+                        <span>💰 15元/人</span>
+                    </div>
+                    <div class="card-address">📍 护国寺小吃（地安门店）</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt="烤肉" class="card-img">
+                    <span class="card-badge">🥩 老字号</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">烤肉季</div>
+                    <p class="card-desc">什刹海边，炭火烤羊肉，180年历史</p>
+                    <div class="card-meta">
+                        <span class="card-rating">⭐ 4.7</span>
+                        <span>💰 80元/人</span>
+                    </div>
+                    <div class="card-address">📍 西城区前海东沿18号</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=600&q=80" alt="包子" class="card-img">
+                    <span class="card-badge">🥟 便宜</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">庆丰包子铺</div>
+                    <p class="card-desc">老字号连锁，猪肉大葱包子+紫米粥</p>
+                    <div class="card-meta">
+                        <span class="card-rating">⭐ 4.3</span>
+                        <span>💰 15元/人</span>
+                    </div>
+                    <div class="card-address">📍 全市多家分店</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?w=600&q=80" alt="爆肚" class="card-img">
+                    <span class="card-badge">🍢 小吃</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">爆肚+糖葫芦</div>
+                    <p class="card-desc">烟袋斜街小吃，边走边吃</p>
+                    <div class="card-meta">
+                        <span class="card-rating">⭐ 4.4</span>
+                        <span>💰 40元/人</span>
+                    </div>
+                    <div class="card-address">📍 烟袋斜街</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Must Visit -->
+    <section class="cards-section">
+        <h2 class="section-title">🏞️ 必去景点</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=600&q=80" alt="故宫" class="card-img">
+                    <span class="card-badge">🏯 必去</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">故宫博物院</div>
+                    <p class="card-desc">紫禁城，明清皇宫，世界文化遗产</p>
+                    <div class="card-meta">
+                        <span>⏱️ 3小时</span>
+                        <span>💰 60元</span>
+                        <span>😴 中等</span>
+                    </div>
+                    <div class="card-address">📍 东城区景山前街4号</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1584467541268-b040f83be3fd?w=600&q=80" alt="恭王府" class="card-img">
+                    <span class="card-badge">🏛️ 推荐</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">恭王府</div>
+                    <p class="card-desc">和珅府邸，清代最大王府，人少景美</p>
+                    <div class="card-meta">
+                        <span>⏱️ 2-3小时</span>
+                        <span>💰 40元</span>
+                        <span>😴 轻松</span>
+                    </div>
+                    <div class="card-address">📍 西城区前海西街17号</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?w=600&q=80" alt="三里河" class="card-img">
+                    <span class="card-badge">🌸 小众</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">三里河公园</div>
+                    <p class="card-desc">首都小江南，小桥流水+黑天鹅，免费</p>
+                    <div class="card-meta">
+                        <span>⏱️ 1-2小时</span>
+                        <span>💰 免费</span>
+                        <span>😴 轻松</span>
+                    </div>
+                    <div class="card-address">📍 东城区三里河路</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=600&q=80" alt="齐物潭" class="card-img">
+                    <span class="card-badge">🦌 小众</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">齐物潭公园</div>
+                    <p class="card-desc">海淀小江南，亭台楼阁+梅花鹿，免费</p>
+                    <div class="card-meta">
+                        <span>⏱️ 2小时</span>
+                        <span>💰 免费</span>
+                        <span>😴 轻松</span>
+                    </div>
+                    <div class="card-address">📍 海淀区北清路156号</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80" alt="南锣鼓巷" class="card-img">
+                    <span class="card-badge">🚶 文艺</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">南锣鼓巷</div>
+                    <p class="card-desc">文艺胡同，小店+咖啡，人多但值得</p>
+                    <div class="card-meta">
+                        <span>⏱️ 2小时</span>
+                        <span>💰 免费</span>
+                        <span>😴 轻松</span>
+                    </div>
+                    <div class="card-address">📍 东城区南锣鼓巷</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=600&q=80" alt="798" class="card-img">
+                    <span class="card-badge">🎨 艺术</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">798艺术区</div>
+                    <p class="card-desc">工业风+艺术展，免费，适合拍照</p>
+                    <div class="card-meta">
+                        <span>⏱️ 2-3小时</span>
+                        <span>💰 免费</span>
+                        <span>😴 轻松</span>
+                    </div>
+                    <div class="card-address">📍 朝阳区酒仙桥路4号</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <h2 class="section-title">🗺️ 攻略地图</h2>
+        <div id="map-container"></div>
+        <div class="map-legend">
+            <span class="legend-item">🍽️ 美食</span>
+            <span class="legend-item">🏞️ 景点</span>
+            <span class="legend-item">🏨 住宿推荐区</span>
+        </div>
+    </section>
+
+    <!-- Route Combinations -->
+    <section class="routes">
+        <h2 class="section-title">🗺️ 推荐路线组合</h2>
+
+        <div class="route-card">
+            <div class="route-title">🎯 经典打卡路线</div>
+            <ul class="route-steps">
+                <li>Day1: 恭王府 → 什刹海 → 南锣鼓巷 → 烟袋斜街 → 四季民福烤鸭</li>
+                <li>Day2: 故宫 → 景山公园 → 三里河公园 → 三里屯</li>
+                <li>Day3: 天坛 → 前门大街 → 大栅栏 → 返程</li>
+            </ul>
+        </div>
+
+        <div class="route-card">
+            <div class="route-title">🌸 小众轻松路线</div>
+            <ul class="route-steps">
+                <li>Day1: 北锣鼓巷 → 鼓楼西大街 → 烤肉季 → 后海</li>
+                <li>Day2: 故宫 → 角楼咖啡 → 三里河公园 → 798艺术区</li>
+                <li>Day3: 齐物潭公园（梅花鹿）→ 北坞公园（稻田）→ 返程</li>
+            </ul>
+        </div>
+
+        <div class="route-card">
+            <div class="route-title">🍜 吃货专属路线</div>
+            <ul class="route-steps">
+                <li>Day1: 护国寺小吃（豆汁）→ 恭王府 → 烤肉季 → 烟袋斜街小吃</li>
+                <li>Day2: 庆丰包子 → 故宫 → 全聚德烤鸭 → 海底捞</li>
+                <li>Day3: 护国寺小吃（面茶）→ 前门大街老字号 → 买稻香村糕点 → 返程</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Budget -->
+    <section class="budget">
+        <h2 class="section-title">💰 预算参考</h2>
+        <table class="budget-table">
+            <thead>
+                <tr>
+                    <th>消费类型</th>
+                    <th>省钱版</th>
+                    <th>舒适版</th>
+                    <th>豪华版</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>🏨 住宿</td>
+                    <td>100元/晚</td>
+                    <td>400元/晚</td>
+                    <td>1000元/晚</td>
+                </tr>
+                <tr>
+                    <td>🍜 餐饮</td>
+                    <td>80元/天</td>
+                    <td>150元/天</td>
+                    <td>300元/天</td>
+                </tr>
+                <tr>
+                    <td>🎫 门票</td>
+                    <td>60元</td>
+                    <td>100元</td>
+                    <td>150元</td>
+                </tr>
+                <tr>
+                    <td>🚗 交通</td>
+                    <td>20元/天</td>
+                    <td>50元/天</td>
+                    <td>100元/天</td>
+                </tr>
+                <tr class="total-row">
+                    <td>💰 3天总计</td>
+                    <td>~800元</td>
+                    <td>~1800元</td>
+                    <td>~3500元</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Warnings -->
+    <section class="warnings">
+        <h2 class="section-title">⚠️ 避雷提醒</h2>
+        <div class="warning-grid">
+            <div class="warning-card">
+                <h4>❌ 故宫必须提前7天预约！</h4>
+                <p>现场买不到票，官网/APP提前抢，周一闭馆</p>
+            </div>
+            <div class="warning-card">
+                <h4>❌ 不要在景区买特产</h4>
+                <p>超市/稻香村专卖店更便宜，景区价格翻倍</p>
+            </div>
+            <div class="warning-card">
+                <h4>❌ 打车避开早晚高峰</h4>
+                <p>7-9点、17-19点堵死，地铁最靠谱</p>
+            </div>
+            <div class="warning-card">
+                <h4>❌ 豆汁不是每个人都喜欢</h4>
+                <p>酸臭味，先买一碗尝尝，别一次买多</p>
+            </div>
+            <div class="warning-card">
+                <h4>❌ 南锣鼓巷人多但值得逛</h4>
+                <p>不想挤人的话去北锣鼓巷，人少安静</p>
+            </div>
+            <div class="warning-card">
+                <h4>❌ 四季民福烤鸭要提前2天预约</h4>
+                <p>故宫景观位超火，现场排队2小时起</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3>🦛 河马出品</h3>
+        <p>让旅行轻松一点 | 北京3日攻略</p>
+    </footer>
+
+    <!-- 高德地图 JS API -->
+    <script src="https://webapi.amap.com/maps?v=2.0&key=YOUR_AMAP_KEY"></script>
+    <script>
+        // 天数切换
+        function showDay(day) {
+            document.querySelectorAll('.day-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.day-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('day-' + day).classList.add('active');
+            document.querySelectorAll('.day-btn')[day - 1].classList.add('active');
+        }
+
+        // 初始化地图（需要高德地图 API Key）
+        // 如果没有 Key，地图不会显示，但不影响其他功能
+        if (typeof AMap !== 'undefined') {
+            var map = new AMap.Map('map-container', {
+                zoom: 12,
+                center: [116.407526, 39.904030], // 北京坐标
+                mapStyle: 'amap://styles/whitesmoke'
+            });
+
+            // 添加美食标记
+            var foodMarkers = [
+                { name: '四季民福烤鸭', position: [116.397128, 39.916527] },
+                { name: '护国寺小吃', position: [116.387329, 39.937293] },
+                { name: '烤肉季', position: [116.385852, 39.942561] }
+            ];
+
+            foodMarkers.forEach(item => {
+                new AMap.Marker({
+                    position: item.position,
+                    title: item.name,
+                    content: '<div style="background:#d4a853;color:white;padding:5px 10px;border-radius:20px;font-size:12px;white-space:nowrap;">🍽️ ' + item.name + '</div>'
+                }).setMap(map);
+            });
+
+            // 添加景点标记
+            var attractionMarkers = [
+                { name: '故宫', position: [116.397026, 39.918058] },
+                { name: '恭王府', position: [116.385852, 39.942561] },
+                { name: '南锣鼓巷', position: [116.402692, 39.937293] },
+                { name: '三里河公园', position: [116.403873, 39.899355] }
+            ];
+
+            attractionMarkers.forEach(item => {
+                new AMap.Marker({
+                    position: item.position,
+                    title: item.name,
+                    content: '<div style="background:#5d4037;color:white;padding:5px 10px;border-radius:20px;font-size:12px;white-space:nowrap;">🏞️ ' + item.name + '</div>'
+                }).setMap(map);
+            });
+
+            map.setFitView();
+        }
+    </script>
+</body>
+</html>
